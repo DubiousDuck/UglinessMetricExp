@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset='UTF-8'>
+        <meta name="author" content="Oscar Su">
+        <title>Oscar's Mock Experiment</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
+        <link rel="stylesheet" href="styling.css">
+        
+    </head>
+    <body>
+        <noscript>It seems that JavaScript is disabled in your browser. Please go to settings and enable JavaScript for this experiment.</noscript>
+        <div id="fullPageContainer">
+            <!--instructions page-->
+            <div class="bigBox" id="instrBox">
+                <p id="instrText">If you see this line, something is wrong with the experiment. Please do not proceed</p>
+                <img id="displayImg" src="images/intentionalBlank.png" alt="Placeholder">
+                <button class="myButtons" id="nextButton" onclick='instr.next()'>Next</button>
+            </div>
+
+            <!--Instruction Quiz-->
+            <div class="bigBox" id="instrQuiz">
+                <h2 id="questionTitle">What is your task in this experiment?</h2>
+                <label class="choices"><input type="radio" name="quiz" value="forgot"> I forgot :D </label>
+                <label class="choices"><input type="radio" name="quiz" value="option1"> I will taste test food that are presented. </label>
+                <label class="choices"><input type="radio" name="quiz" value="option2(correct)"> I will evaluate how appetizing the food presented is. </label>
+                <label class="choices"><input type="radio" name="quiz" value="option3"> I will rate how much I dislike the design of the website. </label>
+                <label class="choices"><input type="radio" name="quiz" value="option4"> I will react if a repeated image has appeared. </label>
+                <p id="quizWarn">Please select an option. Thank you!</p>
+                <button class="myButtons" id="quizButton" onclick="submit_quiz()">Submit</button>
+            </div>
+
+            <!--Consent Box-->
+            <div class="bigBox" id="consentBox">
+                <p>informed consent content goes here...</p>
+                <p>informed consent content goes here...</p>
+                <p>informed consent content goes here...</p>
+                <p>informed consent content goes here...</p>
+                <p>informed consent content goes here...</p>
+                <p>informed consent content goes here...</p>
+                <p>informed consent content goes here...</p>
+                <p>informed consent content goes here...</p>
+                <p>informed consent content goes here...</p>
+                <p>informed consent content goes here...</p>
+            </div>
+
+            <!--Task Box-->
+            <div class="bigBox" id="taskBox">
+                <div id="progress">
+                    <p ><span id="progressBar">0</span>% done</p>
+                </div>
+                <div id="testingArea">
+                    <img id="taskImg" src="images/intentionalBlank.png" alt="error image">
+                </div>
+                <div id="ratingArea">
+                    <span>Not appetizing</span>
+                    <button class="ratingButton" id="taskButton" value="1">1</button>
+                    <button class="ratingButton" id="taskButton" value="2">2</button>
+                    <button class="ratingButton" id="taskButton" value="3">3</button>
+                    <button class="ratingButton" id="taskButton" value="4">4</button>
+                    <button class="ratingButton" id="taskButton" value="5">5</button>
+                    <button class="ratingButton" id="taskButton" value="6">6</button>
+                    <span>Very appetizing</span>
+                </div>
+            </div>
+
+            <!--debriefing and questions-->
+            <div class="bigBox" id="questionBox">
+                <p>You are almost done! Just answer a few self-evaluation questions and you are good to go!</p>
+                <div class="question">
+                    <p>How <i>serious</i> were you when performing the task?</p>
+                    <label><input type="radio" name="serious" value="1">Very not serious</label>
+                    <label><input type="radio" name="serious" value="2">Not serious</label>
+                    <label><input type="radio" name="serious" value="3">Normal</label>
+                    <label><input type="radio" name="serious" value="4">Serious</label>
+                    <label><input type="radio" name="serious" value="5">Very serious</label>
+                    <h3 class="warning" id="seriousWarning">Please select an option.</p>
+                </div>
+                <div class="question">
+                    <p>How <i>easy</i> do you think this task is?</p>
+                    <label><input type="radio" name="easy" value="1">Very easy</label>
+                    <label><input type="radio" name="easy" value="2">Easy</label>
+                    <label><input type="radio" name="easy" value="3">Normal</label>
+                    <label><input type="radio" name="easy" value="4">Hard</label>
+                    <label><input type="radio" name="easy" value="5">Very hard</label>
+                    <h3 class="warning" id="easyWarning">Please select an option.</p>
+                </div>
+                <div class="question">
+                    <p>What is your age?</p>
+                    <div class="smallContainer">
+                        <label for="age">Please enter your age: </label>
+                        <input type="number" name="age" min="0" max="120">
+                    </div>
+                    <h3 class="warning" id="ageWarning">Please enter a valid age</p>
+                </div>
+                <div class="question">
+                    <p>What is your gender?</p>
+                    <label><input type="radio" name="gender" value="F">Female</label>
+                    <label><input type="radio" name="gender" value="M">Male</label>
+                    <label><input type="radio" name="gender" value="O">Others</label>
+                    <label><input type="radio" name="gender" value="N">Rather not to say</label>
+                    <h3 class="warning" id="genderWarning">Please select an option</p>
+                </div>
+                <button class="myButtons" id="quizSubmitButton" onclick="submitQuestion()">Submit</button>
+            </div>
+            <div class="bigBox" id="debriefBox">
+                <h2 id="congratsMess">Congratulations! You have completed the study! I sincerely thank you for your cooperation. <br/>
+                If you would like to learn more about the topic, please scroll down. Otherwise, you can close this window safely now.</h2>
+                <div class="bigBox" id="expBox">
+                    <p>debriefing content goes here...</p>
+                    <p>debriefing content goes here...</p>
+                    <p>debriefing content goes here...</p>
+                    <p>debriefing content goes here...</p>
+                    <p>debriefing content goes here...</p>
+                    <p>debriefing content goes here...</p>
+                    <p>debriefing content goes here...</p>
+                    <p>debriefing content goes here...</p>
+                    <p>debriefing content goes here...</p>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src='js/func.js'></script>
+        <script src='js/subj.js'></script>
+        <script src='js/task.js'></script>
+        <script src='js/instr.js'></script>
+        <script src='js/main.js'></script>
+    </body>
+</html>
