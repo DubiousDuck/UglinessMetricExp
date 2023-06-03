@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(57, 52, 57);
+    background-color: rgb(34, 31, 34);
     font-family: 'Roboto', Calibri, 'Trebuchet MS', sans-serif;
     font-size:1vw;
     color:rgb(249, 240, 255);
@@ -41,14 +41,14 @@ body{
     line-height: 35px;
     text-align: center;
     border-radius: 10px;
-    background: #775388;
+    background: #5d5663;
     color:rgb(249, 240, 255);
     cursor: pointer;
     border-width:0;
 }
 
 .myButtons:hover{
-    background-color: #9269a5;
+    background-color: #988f9c;
 }
 
 #instrQuiz{
@@ -116,22 +116,22 @@ h2{
 }
 
 .ratingButton[value="1"] {
-    background:#7e6f85;
+    background:#9f9da0;
   }
 .ratingButton[value='2']{
-    background:#7a6384;
+    background:#8b8a8c;
 }
 .ratingButton[value='3']{
-    background:#765983;
+    background:#676668;
 }
 .ratingButton[value='4']{
-    background:#775388;
+    background:#484748;
 }
 .ratingButton[value='5']{
-    background:#704484;
+    background:#383636;
 }
 .ratingButton[value='6']{
-    background:#6b3784;
+    background:#323131;
 }
   
 .ratingButton:hover{
