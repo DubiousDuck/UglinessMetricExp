@@ -1,16 +1,18 @@
 //img paths
-const imgFolder = 'images/';
-const imgFiles = [
+const BLOCK_NUM = 8;
+const IMG_FOLDER = 'images/';
+const IMG_FILES = [
     'arepas.webp', 'chocolate.webp', 'Curry.jpeg', 'falafel.jpeg', 'omurice.jpeg', 'StinkyTofu.webp'
 ]
-const pracImg = [
+const PRAC_IMG = [
     'Bottle 1.jpg', 'Bricks 1.jpg', 'Bubble 2.jpg', 'Building 2.jpg', 'Candle 1.jpg'
 ]
 
-const randomImgList = shuffle_array(imgFiles);
-const trialNum = randomImgList.length;
+const RANDOM_TRIAL_LIST = shuffle_array(IMG_FILES);
+const TOTAL_TRIAL_LIST = concat_duplicated_array(RANDOM_TRIAL_LIST, 8);
+const TRIAL_NUM = TOTAL_TRIAL_LIST.length;
 const RATING_PRACTICE_TRIAL_N = 5;
-const RATING_PRACTICE_LIST = shuffle_array(pracImg);
+const RATING_PRACTICE_LIST = shuffle_array(PRAC_IMG);
 
 let instr;
 
@@ -25,7 +27,7 @@ let instr;
 const INSTRUCTIONS = [ //the text_id will determine which one to display
     [false, false, 'Thank you very much!<br /><br />This study will take about 60 minutes. Please read the instructions carefully, and avoid using the refresh or back buttons.'],
     [show_placeHolder, false, 'Throughout the study, images will be displayed on your screen like the one you are seeing now on the screen. If you can\'t see the blank image. Please contact me.'],
-    [hide_placeHolder, false, 'In this study, we will show you '+trialNum+' images, one at a time, along with an adjective. We are interested in how fitting you think the displayed adjective is to the image.'],
+    [hide_placeHolder, false, 'In this study, we will show you '+TRIAL_NUM+' images, one at a time, along with an adjective. We are interested in how fitting you think the displayed adjective is to the image.'],
     [false, false, 'Seven options will be available below the images as seven buttons. Just click one of the options based on your experience.'],
     [false, false, "We will start with some practice trials first. Please try your best completing them."],
     [false, show_practiceTrial, "Great! You have completed all the practice trials. Now we will start with formal trials. Press the button to start. Good luck!"],
@@ -37,7 +39,7 @@ function hide_placeHolder() {
 }
 
 function show_placeHolder(){
-    $('#displayImg').attr('src', imgFolder+'intentionalBlank.png');
+    $('#displayImg').attr('src', IMG_FOLDER+'intentionalBlank.png');
     $('#displayImg').css('display', 'block');
 }
 
@@ -128,6 +130,7 @@ function startTask() {
     //subj.detectVisibilityStart();
     practiceOver = false;
     task.run(); //central function call for task to run
+    console.log(task.trialN);
 }
 
 //the functions below are provided as member functions to be passed to the Task class
@@ -177,6 +180,7 @@ function rating() {
 
 function endTask(){
     //subj.detectVisibilityEnd();
+    //
     $('#taskBox').hide();
     $('#questionBox').show();
     //task.save();
@@ -184,12 +188,12 @@ function endTask(){
 let task_options = {
     titles: TASK_TITLES,
     pracTrialN: RATING_PRACTICE_TRIAL_N,
-    trialN: trialNum,
+    trialN: TRIAL_NUM,
     // savingScript: SAVING_SCRIPT,
     // dataFile: RATING_FILE,
-    stimPath: imgFolder,
+    stimPath: IMG_FOLDER,
     // savingDir: SAVING_DIR,
-    trialList: randomImgList,
+    trialList: TOTAL_TRIAL_LIST,
     pracList: RATING_PRACTICE_LIST,
     //intertrialInterval: INTERTRIAL_INTERVAL,
     updateFunc: taskUpdate,
@@ -242,7 +246,7 @@ function checkAnswered(openEndedQue, choiceQue){
 // ##     ## ######## ##     ## ########     ##
 
 $(document).ready(function(){
-    load_img(0, imgFolder, imgFiles);
+    load_img(0, IMG_FOLDER, IMG_FILES);
     instr = new Instructions(instr_options);
     instr.start();
     console.log("Ready!");
