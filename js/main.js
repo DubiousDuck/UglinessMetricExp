@@ -1,16 +1,14 @@
 //img paths
-const BLOCK_NUM = 8;
+const BLOCK_NUM = 3;
 const IMG_FOLDER = 'images/';
 const IMG_FILES = [
     'arepas.webp', 'chocolate.webp', 'Curry.jpeg', 'falafel.jpeg', 'omurice.jpeg', 'StinkyTofu.webp'
 ]
 const PRAC_IMG = [
-    'Bottle 1.jpg', 'Bricks 1.jpg', 'Bubble 2.jpg', 'Building 2.jpg', 'Candle 1.jpg'
+    '/Utility/Bottle 1.jpg', '/Utility/Bricks 1.jpg', 'Utility/Bubble 2.jpg', 'Utility/Building 2.jpg', 'Utility/Candle 1.jpg'
 ]
 
-const RANDOM_TRIAL_LIST = shuffle_array(IMG_FILES);
-const TOTAL_TRIAL_LIST = concat_duplicated_array(RANDOM_TRIAL_LIST, 8);
-const TRIAL_NUM = TOTAL_TRIAL_LIST.length;
+const TRIAL_NUM = IMG_FILES.length;
 const RATING_PRACTICE_TRIAL_N = 5;
 const RATING_PRACTICE_LIST = shuffle_array(PRAC_IMG);
 
@@ -29,6 +27,7 @@ const INSTRUCTIONS = [ //the text_id will determine which one to display
     [show_placeHolder, false, 'Throughout the study, images will be displayed on your screen like the one you are seeing now on the screen. If you can\'t see the blank image. Please contact me.'],
     [hide_placeHolder, false, 'In this study, we will show you '+TRIAL_NUM+' images, one at a time, along with an adjective. We are interested in how fitting you think the displayed adjective is to the image.'],
     [false, false, 'Seven options will be available below the images as seven buttons. Just click one of the options based on your experience.'],
+    [show_consent, false, "You have finished reading the instruction. <br/> Press ENTER to continue."],
     [false, false, "We will start with some practice trials first. Please try your best completing them."],
     [false, show_practiceTrial, "Great! You have completed all the practice trials. Now we will start with formal trials. Press the button to start. Good luck!"],
     [false, resume_trial, '']
@@ -39,11 +38,12 @@ function hide_placeHolder() {
 }
 
 function show_placeHolder(){
-    $('#displayImg').attr('src', IMG_FOLDER+'intentionalBlank.png');
+    $('#displayImg').attr('src', IMG_FOLDER+'/Utility/intentionalBlank.png');
     $('#displayImg').css('display', 'block');
 }
 
 function show_consent(){
+    $('#nextButton').css('display', 'none');
     $('#consentBox').css('display', 'block');
     $('#consentResponse').css('display', 'block');
     $(document).keyup(function(e){
@@ -51,10 +51,10 @@ function show_consent(){
         var keyNum = e.which;
         if(keyNum == 13){
             $(document).off("keyup");
-            $('#instrBox').css('display', 'none');
-            //why does the instrBox only contain one other block element?
+            instr.next();
             $('#consentBox').css('display', 'none');
-            startTask();
+            $('#nextButton').css('display', 'block');
+            //startTask();
         }
     })
 }
@@ -78,19 +78,20 @@ let instr_options = {
     quizConditions: ['onlyQ']
 };
 
+let block_cnt = 1;
 function show_practiceTrial(){
     //startTask();
     $('#instrBox').css('display', 'none');
     $('#nextButton').css('display', 'none');
     console.log('checkpoint!');
-    startTask();
+    startTask(block_cnt);
 }
 
 function resume_trial(){
     $('#instrBox').css('display', 'none');
     $('#nextButton').css('display', 'none');
     $('#taskBox').css('display', 'block');
-    task.run();
+    //task.run();
 }
 // ########    ###     ######  ##    ##
 //    ##      ## ##   ##    ## ##   ##
@@ -112,25 +113,26 @@ const TASK_TITLES = [
 ];
 
 const TASK_PROMPTS = [ //for easy transition of prompts between blocks
-    "How cool do you think this image is?",
-    "How \'adjective #1\' do you think this image is?",
-    "How adjective #2 do you think this image is?",
-    "How adjective #3 do you think this image is?",
-    "How adjective #4 do you think this image is?",
-    "How adjective #5 do you think this image is?",
-    "How adjective #6 do you think this image is?",
-    "How adjective #7 do you think this image is?",
-    "How aesthetically pleasing do you think this image is?"
+    "How <em>cool</em> do you think this image is?",
+    "How <em>gross</em> do you think this image is?",
+    "How <em>ugly</em> do you think this image is?",
+    "How <em>boring</em> do you think this image is?",
+    "How <em>weird</em> do you think this image is?",
+    "How <em>sad</em> do you think this image is?",
+    "How <em>scary</em> do you think this image is?",
+    "How <em>bad</em> do you think this image is?",
+    "How <em>aesthetically pleasing</em> do you think this image is?"
 ]
 
-function startTask() {
+function startTask(blockNum) {
     //task_options['subj'] = subj;
+    generateTaskOption(blockNum);
     task = new Task(task_options);
     $('#taskBox').show();
     //subj.detectVisibilityStart();
     practiceOver = false;
     task.run(); //central function call for task to run
-    console.log(task.trialN);
+    console.log(blockNum);
 }
 
 //the functions below are provided as member functions to be passed to the Task class
@@ -139,27 +141,27 @@ function taskUpdate(formal_trial, last, this_trial, next_trial, path) {
     task.stimName = this_trial;
    // $('#progressBar').text(task.progress);
     $('#taskImg').attr('src', path + this_trial);
-
+    console.log(this_trial);
     if (!formal_trial) 
         //if not formal trial, display practice trial prompt
         $('#trialPrompt').html("<h2>"+TASK_PROMPTS[0]+"</h2>") //.html will preserve the original tag
     else{
         //the first time switched to formal, remind the participants that we are now switiching
-        if (!practiceOver){
+        if (!practiceOver && task.pracTrialN != 0){
             practiceOver = true;
             formalTrialNotice();
         }
-        $('#trialPrompt').html("<h2>"+TASK_PROMPTS[8]+"</h2>")
+        $('#trialPrompt').html("<h2>"+TASK_PROMPTS[block_cnt]+"</h2>")
+        //display the appropriate prompt
     }
     if (!last) {
-        //$('#buffer-img').attr('src', path + next_trial);
+        $('#buffer-img').attr('src', path + next_trial);
     }
 }
 
 let practiceOver = false;
 
 function formalTrialNotice(){
-    console.log("now we begin the formal trial");
     $('#taskBox').css('display', 'none');
     $('#instrBox').css('display', 'block');
     $('#nextButton').css('display', 'block');
@@ -180,10 +182,15 @@ function rating() {
 
 function endTask(){
     //subj.detectVisibilityEnd();
-    //
-    $('#taskBox').hide();
-    $('#questionBox').show();
+    repeatTrial();
     //task.save();
+}
+
+function repeatTrial(){
+    if (block_cnt < BLOCK_NUM){ //increase block count and restart task
+        block_cnt+=1;
+        startTask(block_cnt);
+    }else endOfTrial();
 }
 let task_options = {
     titles: TASK_TITLES,
@@ -193,7 +200,7 @@ let task_options = {
     // dataFile: RATING_FILE,
     stimPath: IMG_FOLDER,
     // savingDir: SAVING_DIR,
-    trialList: TOTAL_TRIAL_LIST,
+    trialList: IMG_FILES,
     pracList: RATING_PRACTICE_LIST,
     //intertrialInterval: INTERTRIAL_INTERVAL,
     updateFunc: taskUpdate,
@@ -202,6 +209,17 @@ let task_options = {
     progressInfo: true
 };
 
+function generateTaskOption(blockNum){ //redefining task_options every time
+    task_options.pracTrialN = blockNum == 1? RATING_PRACTICE_TRIAL_N:0;
+    let RANDOM_STIM_LIST = shuffle_array(IMG_FILES);
+    task_options.trialList = RANDOM_STIM_LIST;
+    task_options.pracList = blockNum == 1? RATING_PRACTICE_LIST:[];
+}
+
+function endOfTrial(){ //pull up question box
+    $('#taskBox').hide();
+    $('#questionBox').show();
+}
 //  ######  ##     ## ########        ## ########  ######  ########
 // ##    ## ##     ## ##     ##       ## ##       ##    ##    ##
 // ##       ##     ## ##     ##       ## ##       ##          ##

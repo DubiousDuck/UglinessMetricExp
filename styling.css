@@ -84,7 +84,7 @@ h2{
 
 #consentBox{
     display:none;
-    background-color:rgba(120, 102, 154, 0.618);
+    background-color:rgba(143, 134, 160, 0.618);
     width: 45%;
     height: 300px;
     overflow: auto;
@@ -132,6 +132,9 @@ h2{
 }
 .ratingButton[value='6']{
     background:#323131;
+}
+.ratingButton[value='7']{
+    background:#2c2b2b;
 }
   
 .ratingButton:hover{
@@ -212,7 +215,7 @@ span{
 #expBox{
     margin:50px auto 0px;
     border: 2px solid;
-    background-color:rgb(36, 27, 42);
+    background-color:rgb(73, 73, 73);
     width: 50%;
     height: 350px;
     overflow: auto;
