@@ -1,5 +1,5 @@
 //img paths
-const BLOCK_N = 3;
+const BLOCK_N = 2;
 const IMG_FOLDER = "images/";
 const IMG_FILES = [
     "arepas.webp",
@@ -21,6 +21,19 @@ const TRIAL_NUM = IMG_FILES.length;
 const RATING_PRACTICE_TRIAL_N = 5;
 const RATING_PRACTICE_LIST = shuffle_array(PRAC_IMG);
 let part_num = 1;
+
+const NEG_ADJECTIVES = [
+    "gross",
+    "ugly",
+    "boring",
+    "weird",
+    "sad",
+    "scary",
+    "bad"
+]
+let randomAdj = shuffle_array(NEG_ADJECTIVES);
+randomAdj[randomAdj.length] = "aesthetically pleasing";
+const RANDOM_ADJ = randomAdj;
 
 let instr;
 
@@ -52,43 +65,57 @@ const INSTRUCTIONS = [
     [
         show_placeHolder,
         false,
-        "You will view" +
+        "You will view " +
             TRIAL_NUM +
             " images, one at a time, as in the example below."
     ],
     [
         hide_placeHolder,
-        false,
+        show_mock_scale,
         "For the first part, I am interested in how " +
-            ADJECTIVES[part_num - 1] +
+            RANDOM_ADJ[part_num - 1] +
             " you find each image is. You will rate the image using a seven-point scale, as in the example below."
     ],
     [
-        false,
+        hide_mock_scale,
         false,
         "In the later part, you will rate the images based on different aspects of your impression. But let's worry about it when it happens."
     ],
     [
-        startTask,
+        show_consent,
         false,
         "Now, you are ready for the first part.<br/><br/>Press ENTER to start a few pratice!"
     ],
     [
-        false,
+        startTask,
         false,
         "Great! You have completed the practice trials. Press the ENTER to start for real!"
     ]
 ]; //the attributes are: pre_function, post_function, display text
 
+function show_maximize_window(){
+    $("#fullScreenImg").css("display", "block");
+}
+
+function hide_instr_img(){
+    $("#fullScreenImg").css("display", "none");
+}
 function hide_placeHolder() {
     $("#displayImg").css("display", "none");
 }
 
 function show_placeHolder() {
-    $("#displayImg").attr("src", IMG_FOLDER + "/Utility/intentionalBlank.png");
+    $("#displayImg").attr("src", IMG_FOLDER + "/Utility/Bubble 2.jpg");
     $("#displayImg").css("display", "block");
 }
 
+function show_mock_scale(){
+    $("#mockRating").css("display", "flex");
+}
+
+function hide_mock_scale(){
+    $("#mockRating").css("display", "none");
+}
 function show_consent() {
     $("#nextButton").css("display", "none");
     $("#consentBox").css("display", "block");
@@ -98,10 +125,10 @@ function show_consent() {
         var keyNum = e.which;
         if (keyNum == 13) {
             $(document).off("keyup");
+            instr.next();
             $("#instrBox").css("display", "none");
             $("#consentBox").css("display", "none");
-            instr.next();
-            show_practiceTrial();
+            console.log("it's me, Mario!");
         }
     });
 }
@@ -146,7 +173,7 @@ const TASK_PROMPTS = [
 
 function startTask() {
     //task_options['subj'] = subj;
-    $("#trialPrompt").text(TASK_PROMPTS[part_num - 1]);
+    $("#promptAdj").text(RANDOM_ADJ[part_num - 1]);
     task = new Task(task_options);
     $("#taskBox").show();
     //subj.detectVisibilityStart();
@@ -187,6 +214,7 @@ function listenToStartFormal() {
             instr.next();
             $("#taskBox").css("display", "block");
             task.startTime = Date.now();
+            console.log("it's me, Luigi!");
         }
     });
 }
@@ -218,7 +246,7 @@ function interBlockRest() {
             " out of " +
             BLOCK_N +
             " parts. Take a brief break if you wish.<br/><br/> Next, I am interested in how " +
-            ADJECTIVES[part_num - 1] +
+            RANDOM_ADJ[part_num] +
             " you find each image is.<br/><br/> When you are ready, press ENTER to continue."
     );
     $(document).keyup(function (e) {
@@ -270,11 +298,11 @@ function endOfTrial() {
 //  ######   #######  ########   ######  ########  ######     ##
 
 function submitQuestion() {
-    const openQueNames = ["age"];
-    const choiceNames = ["serious", "easy", "gender"];
+    const openQueNames = ["age", "unclear"];
+    const choiceNames = ["serious", "gender"];
     if (checkAnswered(openQueNames, choiceNames)) {
         $("#questionBox").css("display", "none");
-        $("#debriefBox").css("display", "block");
+        $("#debriefBox").css("display", "flex");
     }
 }
 
@@ -296,6 +324,14 @@ function checkAnswered(openEndedQue, choiceQue) {
     }
     return allResponded;
 }
+
+function go_to_top(){
+    $('html, body').animate({ scrollTop: 0 }, 'slow');
+}
+
+function go_to_completion_page(){
+    exit_fullscreen();
+}
 // ########  ########    ###    ########  ##    ##
 // ##     ## ##         ## ##   ##     ##  ##  ##
 // ##     ## ##        ##   ##  ##     ##   ####
@@ -308,5 +344,4 @@ $(document).ready(function () {
     load_img(0, IMG_FOLDER, IMG_FILES);
     instr = new Instructions(instr_options);
     instr.start();
-    console.log("Ready!");
 });

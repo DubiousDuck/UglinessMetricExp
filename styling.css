@@ -16,7 +16,11 @@ body{
     left: 50%; /* Move the container element right by 50% of its width */
     transform: translate(-50%, -52%); /* Translate the container element up by 50% of its height and left by 50% of its width */
 }
-
+#fullScreenImg{
+    display:none;
+    position:relative;
+    margin: 0 auto;
+}
 #displayImg{
     display:none;
     position: relative;
@@ -31,6 +35,13 @@ body{
     text-align: center;
 }
 
+#mockRating{
+    position:relative;
+    display:none; justify-content: center; align-items: center;
+    /*border: 2px dashed #000;*/
+    width:100%;
+    margin: 60px auto;
+}
 .myButtons{
     display: block;
     position: relative;
@@ -102,7 +113,7 @@ h2{
 .ratingButton{
     display:inline-block;
     position: relative;
-    margin: 10px 20px auto;
+    margin: 10px 5px auto;
     width: 125px;
     height: 50px;
     font-size: 1.5vw;
@@ -116,25 +127,27 @@ h2{
 }
 
 .ratingButton[value="1"] {
-    background:#9f9da0;
+    background:#b5b3b6;
+    margin-left:15px;
   }
 .ratingButton[value='2']{
-    background:#8b8a8c;
+    background:#a9a8ab;
 }
 .ratingButton[value='3']{
-    background:#676668;
+    background:#89888a;
 }
 .ratingButton[value='4']{
-    background:#484748;
+    background:#6e6d6e;
 }
 .ratingButton[value='5']{
-    background:#383636;
+    background:#605d5d;
 }
 .ratingButton[value='6']{
-    background:#323131;
+    background:#4c4b4b;
 }
 .ratingButton[value='7']{
-    background:#2c2b2b;
+    background:#3d3c3c;
+    margin-right:15px;
 }
   
 .ratingButton:hover{
@@ -164,7 +177,7 @@ span{
     position:relative;
     display:flex; justify-content: center; align-items: center;
     /*border: 2px dashed #000;*/
-    width:100%;
+    width:80%;
     margin: 20px auto;
 }
 
@@ -209,7 +222,11 @@ span{
 }
 
 #debriefBox{
-    display:none;
+    position:relative;
+    display:none; justify-content: center; align-items: center;
+    flex-direction: column;
+    width:100%;
+    transform: translateY(30%);
 }
 
 #expBox{

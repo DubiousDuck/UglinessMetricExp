@@ -19,16 +19,5 @@ Eight blocks of trials
 Self-disclosure questionnaire
 Debriefing
 
-To be added:
-    image list
-
-Get rid of the placeholder w a real image
-"alt": contact me
-"Your job is to rate your impression of the image"
-Buttons closer and narrower
-Use the same adj for practice
-No need "self-evaluation"
-No "normal"
-No "easiness"
 Make the debriefing more interesting
-Avoid using "html" in js cuz prone to attack
+Implement real images
