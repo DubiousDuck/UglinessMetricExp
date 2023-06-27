@@ -20,6 +20,7 @@ body{
     display:none;
     position:relative;
     margin: 0 auto;
+    width: 20%;
 }
 #displayImg{
     display:none;
@@ -31,7 +32,7 @@ body{
     font-size:2vw;
     position: relative;
     width:50%;
-    margin:50px auto;
+    margin:25px auto;
     text-align: center;
 }
 
@@ -80,6 +81,9 @@ body{
 
 h2{
     font-size:2.5vw;
+}
+h1{
+    font-size:3vw;
 }
 #questionTitle{
     text-align: center;
@@ -225,15 +229,24 @@ span{
     position:relative;
     display:none; justify-content: center; align-items: center;
     flex-direction: column;
+    text-align: center;
     width:100%;
-    transform: translateY(30%);
+    transform: translateY(20%);
 }
 
+.divider{
+    height: 1px;
+    margin: 0 auto;
+    width:70%;
+    background-color: rgb(77, 76, 76);
+}
 #expBox{
-    margin:50px auto 0px;
-    border: 2px solid;
-    background-color:rgb(73, 73, 73);
-    width: 50%;
-    height: 350px;
-    overflow: auto;
+    width:70%;
+    margin: 0 auto;
+    text-align:left;
+}
+
+#expBox p{
+    font-size: 1.75vw;
+    margin: 5px auto;
 }

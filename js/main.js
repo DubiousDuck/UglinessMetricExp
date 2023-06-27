@@ -1,5 +1,5 @@
 //img paths
-const BLOCK_N = 2;
+const BLOCK_N = 1;
 const IMG_FOLDER = "images/";
 const IMG_FILES = [
     "arepas.webp",
@@ -72,9 +72,9 @@ const INSTRUCTIONS = [
     [
         hide_placeHolder,
         show_mock_scale,
-        "For the first part, I am interested in how " +
+        "For the first part, I am interested in how <em>" +
             RANDOM_ADJ[part_num - 1] +
-            " you find each image is. You will rate the image using a seven-point scale, as in the example below."
+            "</em> you find each image is. You will rate the image using a seven-point scale, as in the example below."
     ],
     [
         hide_mock_scale,
@@ -122,8 +122,7 @@ function show_consent() {
     $("#consentResponse").css("display", "block");
     $(document).keyup(function (e) {
         console.log("keypressed!");
-        var keyNum = e.which;
-        if (keyNum == 13) {
+        if (e.key == "Enter") {
             $(document).off("keyup");
             instr.next();
             $("#instrBox").css("display", "none");
@@ -157,18 +156,6 @@ const TASK_TITLES = [
     "inView",
     "response",
     "rt"
-];
-
-const TASK_PROMPTS = [
-    //for easy transition of prompts between blocks
-    "How <em>gross</em> do you find this image is?",
-    "How <em>ugly</em> do you find this image is?",
-    "How <em>boring</em> do you find this image is?",
-    "How <em>weird</em> do you find this image is?",
-    "How <em>sad</em> do you find this image is?",
-    "How <em>scary</em> do you find this image is?",
-    "How <em>bad</em> do you find this image is?",
-    "How <em>aesthetically pleasing</em> do you find this image is?"
 ];
 
 function startTask() {
@@ -245,14 +232,13 @@ function interBlockRest() {
             part_num +
             " out of " +
             BLOCK_N +
-            " parts. Take a brief break if you wish.<br/><br/> Next, I am interested in how " +
+            " parts. Take a brief break if you wish.<br/><br/> Next, I am interested in how <em>" +
             RANDOM_ADJ[part_num] +
-            " you find each image is.<br/><br/> When you are ready, press ENTER to continue."
+            "</em> you find each image is.<br/><br/> When you are ready, press ENTER to continue."
     );
     $(document).keyup(function (e) {
         console.log("keypressed!");
-        var keyNum = e.which;
-        if (keyNum == 13) {
+        if (e.key == "Enter") {
             $(document).off("keyup");
             $("#instrBox").css("display", "none");
             startNextPart();
@@ -331,6 +317,12 @@ function go_to_top(){
 
 function go_to_completion_page(){
     exit_fullscreen();
+}
+
+function go_to_ending(){
+    $("#instrBox").hide();
+    $("#debriefBox").show();
+    $("#endingShortcut").hide();
 }
 // ########  ########    ###    ########  ##    ##
 // ##     ## ##         ## ##   ##     ##  ##  ##

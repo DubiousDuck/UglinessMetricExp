@@ -19,5 +19,4 @@ Eight blocks of trials
 Self-disclosure questionnaire
 Debriefing
 
-Make the debriefing more interesting
 Implement real images
