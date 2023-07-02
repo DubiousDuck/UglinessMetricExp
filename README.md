@@ -19,4 +19,4 @@ Eight blocks of trials
 Self-disclosure questionnaire
 Debriefing
 
-Implement real images
+Implement real images (fix asynch issues)

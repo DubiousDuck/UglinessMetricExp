@@ -4,6 +4,16 @@ body{
     font-size:1vw;
     color:rgb(249, 240, 255);
 }
+h2{
+    font-size:2.5vw;
+}
+h1{
+    font-size:3vw;
+}
+span{
+    font-size:35px;
+    margin-top:10px;
+}
 
 .bigBox{
     width:100%;
@@ -79,12 +89,6 @@ body{
     cursor: pointer;
 }
 
-h2{
-    font-size:2.5vw;
-}
-h1{
-    font-size:3vw;
-}
 #questionTitle{
     text-align: center;
     margin: 50px auto;
@@ -114,12 +118,20 @@ h1{
     margin-bottom:30px;
 }
 
+#trialPrompt{
+    color:rgb(203, 202, 202);
+}
+
+#promptAdj{
+    color:white;
+    font-size:larger;
+}
 .ratingButton{
     display:inline-block;
     position: relative;
     margin: 10px 5px auto;
-    width: 125px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     font-size: 1.5vw;
     line-height: 35px;
     text-align: center;
@@ -132,7 +144,7 @@ h1{
 
 .ratingButton[value="1"] {
     background:#b5b3b6;
-    margin-left:15px;
+    margin-left:30px;
   }
 .ratingButton[value='2']{
     background:#a9a8ab;
@@ -151,18 +163,13 @@ h1{
 }
 .ratingButton[value='7']{
     background:#3d3c3c;
-    margin-right:15px;
+    margin-right:30px;
 }
   
 .ratingButton:hover{
     border-color:white;
     border-width:3px;
     border-style:solid;
-}
-
-span{
-    font-size:larger;
-    margin-top:10px;
 }
 
 #taskImg{ /* how to make all images the same dimension?*/
@@ -191,8 +198,10 @@ span{
 }
 
 #questionBox{
+    position:relative;
     text-align: center;
     display:none;
+    height:100%;
 }
 #questionBox p{
     font-size:2vw;
@@ -210,6 +219,10 @@ span{
     margin:0px 0px 0px 5px;
 }
 
+#problems{
+    width:40%;
+    height:100px;
+}
 .smallContainer{
     display:flex;
     justify-content: center;

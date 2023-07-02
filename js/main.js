@@ -1,17 +1,46 @@
+//image list
+var entries;
+function loadImgData(){
+    return new Promise(function(resolve, reject){
+        $.ajax({ //remember, AJAX request is asynchronous
+            url: 'image_list_AVA.csv',
+            dataType: 'text',
+            success: function(data) {
+                entries = parseCSV(data);
+                console.log(entries.length);
+                resolve(entries);
+            },
+            error: function() {
+                reject('Error loading CSV file.');
+            }
+        });
+    });
+}
+
+function parseCSV(csv) {
+    var lines = csv.split('\n');
+    var result = [];
+
+    for (var i = 1; i < lines.length-1; i++) {
+        var currentLine = lines[i].split(',');
+        var filename = currentLine[0]+'.jpg'; //extract only the index
+        result.push(filename);
+    }
+
+    return result;
+}  
+loadImgData(); //somehow it doesn't work...
 //img paths
 const BLOCK_N = 1;
 const IMG_FOLDER = "images/";
 const IMG_FILES = [
-    "arepas.webp",
-    "chocolate.webp",
-    "Curry.jpeg",
-    "falafel.jpeg",
-    "omurice.jpeg",
-    "StinkyTofu.webp"
+    "221480.jpg",
+    "12896.jpg",
+    "214675.jpg"
 ];
 const PRAC_IMG = [
-    "/Utility/Bottle 1.jpg",
-    "/Utility/Bricks 1.jpg",
+    "Utility/Bottle 1.jpg",
+    "Utility/Bricks 1.jpg",
     "Utility/Bubble 2.jpg",
     "Utility/Building 2.jpg",
     "Utility/Candle 1.jpg"
@@ -72,9 +101,9 @@ const INSTRUCTIONS = [
     [
         hide_placeHolder,
         show_mock_scale,
-        "For the first part, I am interested in how <em>" +
+        "For the first part, I am interested in how <strong>" +
             RANDOM_ADJ[part_num - 1] +
-            "</em> you find each image is. You will rate the image using a seven-point scale, as in the example below."
+            "</strong> you find each image is. You will rate the image using a seven-point scale, as in the example below."
     ],
     [
         hide_mock_scale,
@@ -89,7 +118,7 @@ const INSTRUCTIONS = [
     [
         startTask,
         false,
-        "Great! You have completed the practice trials. Press the ENTER to start for real!"
+        "Great! You have completed the practice trials. Press ENTER to start for real!"
     ]
 ]; //the attributes are: pre_function, post_function, display text
 
@@ -164,7 +193,7 @@ function startTask() {
     task = new Task(task_options);
     $("#taskBox").show();
     //subj.detectVisibilityStart();
-    shuffle_array(task.trialList);
+    task.trialList = shuffle_array(task.trialList);
     task.run(); //central function call for task to run
 }
 
@@ -284,7 +313,7 @@ function endOfTrial() {
 //  ######   #######  ########   ######  ########  ######     ##
 
 function submitQuestion() {
-    const openQueNames = ["age", "unclear"];
+    const openQueNames = ["age", "problems"];
     const choiceNames = ["serious", "gender"];
     if (checkAnswered(openQueNames, choiceNames)) {
         $("#questionBox").css("display", "none");
@@ -308,6 +337,10 @@ function checkAnswered(openEndedQue, choiceQue) {
             allResponded = false;
         } else $("#" + q + "Warning").css("display", "none");
     }
+    if ($("#problems").val() == ""){
+        $("#problemsWarning").show();
+        allResponded = false;
+    }else $("#problemsWarning").hide();
     return allResponded;
 }
 
