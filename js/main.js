@@ -318,6 +318,7 @@ function submitQuestion() {
     if (checkAnswered(openQueNames, choiceNames)) {
         $("#questionBox").css("display", "none");
         $("#debriefBox").css("display", "flex");
+        $("#endingShortcut").hide();
     }
 }
 
@@ -355,6 +356,7 @@ function go_to_completion_page(){
 function go_to_ending(){
     $("#instrBox").hide();
     $("#debriefBox").show();
+    $("#endingShortcut").hide();
     $("#endingShortcut").hide();
 }
 // ########  ########    ###    ########  ##    ##

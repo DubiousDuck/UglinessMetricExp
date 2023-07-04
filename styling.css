@@ -1,20 +1,22 @@
 body{
     background-color: rgb(34, 31, 34);
     font-family: 'Roboto', Calibri, 'Trebuchet MS', sans-serif;
-    font-size:1vw;
+    font-size: 21px;
     color:rgb(249, 240, 255);
 }
 h2{
-    font-size:2.5vw;
+    min-width: 35px;
 }
 h1{
-    font-size:3vw;
+    min-width:48px;
 }
 span{
-    font-size:35px;
+    font-size:21px;
     margin-top:10px;
 }
-
+button{
+    font-size:21px;
+}
 .bigBox{
     width:100%;
     margin: 0px auto;
@@ -39,7 +41,6 @@ span{
 }
 
 #instrText{
-    font-size:2vw;
     position: relative;
     width:50%;
     margin:25px auto;
@@ -59,7 +60,6 @@ span{
     margin: 25px auto;
     width: 200px;
     height: 50px;
-    font-size: 1.5vw;
     line-height: 35px;
     text-align: center;
     border-radius: 10px;
@@ -83,7 +83,6 @@ span{
     margin: 10px auto;
     padding: 7px;
     width: 80%;
-    font-size:2vw;
     border-radius: 8px;
     background: rgb(134, 107, 145);
     cursor: pointer;
@@ -97,7 +96,6 @@ span{
 #quizWarn{
     display: none;
     text-align: center;
-    font-size:1.5vw;
     margin:50px auto;
 }
 
@@ -132,7 +130,6 @@ span{
     margin: 10px 5px auto;
     width: 70px;
     height: 70px;
-    font-size: 1.5vw;
     line-height: 35px;
     text-align: center;
     border-radius: 10px;
@@ -203,16 +200,12 @@ span{
     display:none;
     height:100%;
 }
-#questionBox p{
-    font-size:2vw;
-    margin-bottom:10px;
-}
-#questionBox label{
-    font-size:1.5vw;
+#questionBox{
+    font-size:30px;
 }
 
-#questionBox input{
-    margin:0px 5px 0px 20px;
+#questionBox label{
+    font-size:24px;
 }
 
 #questionBox input[name=age]{
@@ -222,6 +215,11 @@ span{
 #problems{
     width:40%;
     height:100px;
+}
+.small-dim{
+    font-size:18px;
+    margin-top:0px;
+    margin-bottom:20px;
 }
 .smallContainer{
     display:flex;
@@ -260,6 +258,9 @@ span{
 }
 
 #expBox p{
-    font-size: 1.75vw;
     margin: 5px auto;
+}
+
+#endingShortcut{
+    position:relative;
 }
