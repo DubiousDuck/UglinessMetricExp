@@ -46,9 +46,9 @@
 
             <!--Task Box-->
             <div class="bigBox" id="taskBox">
-                <!--<div id="progress">
-                    <p>Part <span id="partNum">0</span>: <span id="progressBar">0</span>% done</p>
-                </div>-->
+                <div id="progress">
+                    <p style="margin-bottom:10px">Part <span id="partNum">0</span>: <span id="progressBar">0</span>% done</p>
+                </div>
                 <h1 id="trialPrompt">How  <span id="promptAdj"></span>  do you find this image is?</h1>
                 <div id="testingArea">
                     <img id="taskImg" src="images/intentionalBlank.png" alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-test" to receive credit.'>
@@ -69,35 +69,35 @@
 
             <!--debriefing and questions-->
             <div class="bigBox" id="questionBox">
-                <p>You are almost done! Please answer these last questions:</p>
+                <h2>You are almost done! Please answer these last questions:</h2>
                 <div class="question">
-                    <p style="margin-bottom:10px">Did you complete this experiment seriously throughout (without responding randomly)?</p>
+                    <h3 style="margin-bottom:10px">Did you complete this experiment seriously throughout (without responding randomly)?</h3>
                     <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
                     <label><input type="radio" name="serious" value="no">No, I didn't.</label>
                     <label><input type="radio" name="serious" value="yes">Yes, I did.</label>
-                    <h3 class="warning" id="seriousWarning">Please select an option.</p>
+                    <h3 class="warning" id="seriousWarning">Please select an option.</h3>
                 </div>
                 <div class="question">
-                    <p style="margin-bottom:10px">Was any part of the procedure unclear? Did you have any problems completing any of the tasks?</p>
+                    <h3 style="margin-bottom:10px">Was any part of the procedure unclear? Did you have any problems completing any of the tasks?</h3>
                     <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
                     <textarea id="problems"></textarea>
-                    <h3 class="warning" id="problemsWarning">Please answer this question.</p>
+                    <h3 class="warning" id="problemsWarning">Please answer this question.</h3>
                 </div>
                 <div class="question">
-                    <p style="margin-bottom:10px">What is your age?</p>
+                    <h3 style="margin-bottom:10px">What is your age?</h3>
                     <div class="smallContainer">
                         <label for="age">Please enter your age: </label>
                         <input type="number" name="age" min="18" max="120">
                     </div>
-                    <h3 class="warning" id="ageWarning">Please enter a valid age</p>
+                    <h3 class="warning" id="ageWarning">Please enter a valid age</h3>
                 </div>
                 <div class="question">
-                    <p style="margin-bottom:10px">What is your gender?</p>
+                    <h3 style="margin-bottom:10px">What is your gender?</h3>
                     <label><input type="radio" name="gender" value="F">Female</label>
                     <label><input type="radio" name="gender" value="M">Male</label>
                     <label><input type="radio" name="gender" value="O">Others</label>
                     <label><input type="radio" name="gender" value="N">Rather not to say</label>
-                    <h3 class="warning" id="genderWarning">Please select an option</p>
+                    <h3 class="warning" id="genderWarning">Please select an option</h3>
                 </div>
                 <button class="myButtons" id="quizSubmitButton" onclick="submitQuestion()">Submit</button>
             </div>
@@ -116,9 +116,10 @@
                 </div>
                 <button class="myButtons" onclick = 'go_to_top()'>Back to Top</button>
             </div>
-            <button class = "myButtons" id="endingShortcut" onclick="go_to_ending()">To Last Page</button> <!--XXX TODO-->
+            <!--<button class = "myButtons" id="endingShortcut" onclick="go_to_ending()">To Last Page</button> -XXX TODO-->
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="js/stimList.js"></script>
         <script src='js/func.js'></script>
         <script src='js/subj.js'></script>
         <script src='js/task.js'></script>

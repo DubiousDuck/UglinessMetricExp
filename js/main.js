@@ -1,43 +1,7 @@
-//image list
-var entries;
-function loadImgData(){
-    return new Promise(function(resolve, reject){
-        $.ajax({ //remember, AJAX request is asynchronous
-            url: 'image_list_AVA.csv',
-            dataType: 'text',
-            success: function(data) {
-                entries = parseCSV(data);
-                console.log(entries.length);
-                resolve(entries);
-            },
-            error: function() {
-                reject('Error loading CSV file.');
-            }
-        });
-    });
-}
-
-function parseCSV(csv) {
-    var lines = csv.split('\n');
-    var result = [];
-
-    for (var i = 1; i < lines.length-1; i++) {
-        var currentLine = lines[i].split(',');
-        var filename = currentLine[0]+'.jpg'; //extract only the index
-        result.push(filename);
-    }
-
-    return result;
-}  
-loadImgData(); //somehow it doesn't work...
 //img paths
 const BLOCK_N = 1;
 const IMG_FOLDER = "images/";
-const IMG_FILES = [
-    "221480.jpg",
-    "12896.jpg",
-    "214675.jpg"
-];
+
 const PRAC_IMG = [
     "Utility/Bottle 1.jpg",
     "Utility/Bricks 1.jpg",
@@ -201,7 +165,8 @@ function startTask() {
 function taskUpdate(formal_trial, last, this_trial, next_trial, path) {
     //use formal_trial parameter to determine whether the trial is practice or formal
     task.stimName = this_trial;
-    // $('#progressBar').text(task.progress);
+    $('#partNum').text(part_num);
+    $('#progressBar').text(task.progress);
     $("#taskImg").attr("src", path + this_trial);
     console.log(this_trial);
     if (formal_trial) {

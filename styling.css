@@ -4,6 +4,10 @@ body{
     font-size: 21px;
     color:rgb(249, 240, 255);
 }
+h3{
+    min-width:28px;
+    font-size:28px;
+}
 h2{
     min-width: 35px;
 }
@@ -118,6 +122,7 @@ button{
 
 #trialPrompt{
     color:rgb(203, 202, 202);
+    margin-top:10px;
 }
 
 #promptAdj{
@@ -194,14 +199,15 @@ button{
     font-size: 25px;
 }
 
+#progress span{
+    font-size:25px;
+}
+
 #questionBox{
     position:relative;
     text-align: center;
     display:none;
     height:100%;
-}
-#questionBox{
-    font-size:30px;
 }
 
 #questionBox label{
@@ -217,7 +223,7 @@ button{
     height:100px;
 }
 .small-dim{
-    font-size:18px;
+    font-size:21px;
     margin-top:0px;
     margin-bottom:20px;
 }
@@ -228,6 +234,7 @@ button{
 .warning{
     color:red;
     display:none;
+    margin:15px 0px 0px auto;
 }
 
 #congratsMess{
