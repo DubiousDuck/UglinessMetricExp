@@ -66,58 +66,58 @@
                     <span>Extremely</span>
                 </div>
             </div>
-
-            <!--debriefing and questions-->
-            <div class="bigBox" id="questionBox">
-                <h2>You are almost done! Please answer these last questions:</h2>
-                <div class="question">
-                    <h3 style="margin-bottom:10px">Did you complete this experiment seriously throughout (without responding randomly)?</h3>
-                    <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
-                    <label><input type="radio" name="serious" value="no">No, I didn't.</label>
-                    <label><input type="radio" name="serious" value="yes">Yes, I did.</label>
-                    <h3 class="warning" id="seriousWarning">Please select an option.</h3>
-                </div>
-                <div class="question">
-                    <h3 style="margin-bottom:10px">Was any part of the procedure unclear? Did you have any problems completing any of the tasks?</h3>
-                    <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
-                    <textarea id="problems"></textarea>
-                    <h3 class="warning" id="problemsWarning">Please answer this question.</h3>
-                </div>
-                <div class="question">
-                    <h3 style="margin-bottom:10px">What is your age?</h3>
-                    <div class="smallContainer">
-                        <label for="age">Please enter your age: </label>
-                        <input type="number" name="age" min="18" max="120">
-                    </div>
-                    <h3 class="warning" id="ageWarning">Please enter a valid age</h3>
-                </div>
-                <div class="question">
-                    <h3 style="margin-bottom:10px">What is your gender?</h3>
-                    <label><input type="radio" name="gender" value="F">Female</label>
-                    <label><input type="radio" name="gender" value="M">Male</label>
-                    <label><input type="radio" name="gender" value="O">Others</label>
-                    <label><input type="radio" name="gender" value="N">Rather not to say</label>
-                    <h3 class="warning" id="genderWarning">Please select an option</h3>
-                </div>
-                <button class="myButtons" id="quizSubmitButton" onclick="submitQuestion()">Submit</button>
-            </div>
-            <div class="bigBox" id="debriefBox">
-                <h2 id="congratsMess">Now there's one step left: Click END to get your credit! Thank you very much!<br /><br />
-                Interested in what we are testing? See below for more information.</h2>
-                <button class='myButtons' onclick='go_to_completion_page()'>END</button>
-                <br></br><div class="divider"></div>
-                <div class="bigBox" id="expBox">
-                    <h1>What “looks bad”? </h1>
-                    <p>We are interested in finding out what “looks bad” for people. An obvious answer would be just whatever that doesn't look aesthetically pleasing. However, is it possible that “ugliness” serves special function that it has more depth and dimension?</p>
-                    <br></br>
-                    <p>Earlier, you shared your impressions of images regarding various dimensions. With these data, we can look for relationships between ugliness and various aspect of your impressions. For example, if the “gross” impression is highly correlated with ugliness, it may suggest that seeing ugliness may be related to detecting "gross" things.</p>
-                    <br></br>
-                    <p>Thank you again for your work! Please press the button below to go back to the top of the page.</p>
-                </div>
-                <button class="myButtons" onclick = 'go_to_top()'>Back to Top</button>
-            </div>
-            <!--<button class = "myButtons" id="endingShortcut" onclick="go_to_ending()">To Last Page</button> -XXX TODO-->
         </div>
+        <!--Disclosure Questions-->
+        <div class="bigBox" id="questionBox">
+            <h2>You are almost done! Please answer these last questions:</h2>
+            <div class="question">
+                <h3 style="margin-bottom:10px">Did you complete this experiment seriously throughout (without responding randomly)?</h3>
+                <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
+                <label><input type="radio" name="serious" value="no">No, I didn't.</label>
+                <label><input type="radio" name="serious" value="yes">Yes, I did.</label>
+                <h3 class="warning" id="seriousWarning">Please select an option.</h3>
+            </div>
+            <div class="question">
+                <h3 style="margin-bottom:10px">Was any part of the procedure unclear? Did you have any problems completing any of the tasks?</h3>
+                <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
+                <textarea id="problems"></textarea>
+                <h3 class="warning" id="problemsWarning">Please answer this question.</h3>
+            </div>
+            <div class="question">
+                <h3 style="margin-bottom:10px">What is your age?</h3>
+                <div class="smallContainer">
+                    <label for="age">Please enter your age: </label>
+                    <input type="number" name="age" min="18" max="120">
+                </div>
+                <h3 class="warning" id="ageWarning">Please enter a valid age</h3>
+            </div>
+            <div class="question">
+                <h3 style="margin-bottom:10px">What is your gender?</h3>
+                <label><input type="radio" name="gender" value="F">Female</label>
+                <label><input type="radio" name="gender" value="M">Male</label>
+                <label><input type="radio" name="gender" value="O">Others</label>
+                <label><input type="radio" name="gender" value="N">Rather not to say</label>
+                <h3 class="warning" id="genderWarning">Please select an option</h3>
+            </div>
+            <button class="myButtons" id="quizSubmitButton" onclick="submitQuestion()">Submit</button>
+        </div>
+        <!--debriefing-->
+        <div class="bigBox" id="debriefBox">
+            <h2 id="congratsMess">Now there's one step left: Click END to get your credit! Thank you very much!<br /><br />
+            Interested in what we are testing? See below for more information.</h2>
+            <button class='myButtons' onclick='go_to_completion_page()'>END</button>
+            <br></br><div class="divider"></div>
+            <div class="bigBox" id="expBox">
+                <h1>What “looks bad”? </h1>
+                <p>We are interested in finding out what “looks bad” for people. An obvious answer would be just whatever that doesn't look aesthetically pleasing. However, is it possible that “ugliness” serves special function that it has more depth and dimension?</p>
+                <br></br>
+                <p>Earlier, you shared your impressions of images regarding various dimensions. With these data, we can look for relationships between ugliness and various aspect of your impressions. For example, if the “gross” impression is highly correlated with ugliness, it may suggest that seeing ugliness may be related to detecting "gross" things.</p>
+                <br></br>
+                <p>Thank you again for your work! Please press the button below to go back to the top of the page.</p>
+            </div>
+            <button class="myButtons" onclick = 'go_to_top()'>Back to Top</button>
+        </div>
+        <!--<button class = "myButtons" id="endingShortcut" onclick="go_to_ending()">To Last Page</button> -XXX TODO-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="js/stimList.js"></script>
         <script src='js/func.js'></script>

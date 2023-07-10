@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(34, 31, 34);
+    background-color: rgb(25, 23, 25);
     font-family: 'Roboto', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 21px;
     color:rgb(249, 240, 255);
@@ -121,7 +121,7 @@ button{
 }
 
 #trialPrompt{
-    color:rgb(203, 202, 202);
+    color:rgb(183, 183, 183);
     margin-top:10px;
 }
 
@@ -145,26 +145,26 @@ button{
 }
 
 .ratingButton[value="1"] {
-    background:#b5b3b6;
+    background:#7c7b7c;
     margin-left:30px;
   }
 .ratingButton[value='2']{
-    background:#a9a8ab;
+    background:#727173;
 }
 .ratingButton[value='3']{
-    background:#89888a;
+    background:#6b6a6b;
 }
 .ratingButton[value='4']{
-    background:#6e6d6e;
+    background:#5f5e5f;
 }
 .ratingButton[value='5']{
-    background:#605d5d;
+    background:#494848;
 }
 .ratingButton[value='6']{
-    background:#4c4b4b;
+    background:#424141;
 }
 .ratingButton[value='7']{
-    background:#3d3c3c;
+    background:#343333;
     margin-right:30px;
 }
   
@@ -197,6 +197,7 @@ button{
 #progress{
     text-align:center;
     font-size: 25px;
+    color:rgb(183, 183, 183);
 }
 
 #progress span{
@@ -208,6 +209,7 @@ button{
     text-align: center;
     display:none;
     height:100%;
+    margin-top:75px;
 }
 
 #questionBox label{
@@ -249,7 +251,7 @@ button{
     flex-direction: column;
     text-align: center;
     width:100%;
-    transform: translateY(20%);
+    margin-top:100px;
 }
 
 .divider{
@@ -266,6 +268,7 @@ button{
 
 #expBox p{
     margin: 5px auto;
+    font-size:28px;
 }
 
 #endingShortcut{

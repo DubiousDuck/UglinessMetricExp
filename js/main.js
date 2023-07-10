@@ -51,19 +51,19 @@ const INSTRUCTIONS = [
         "For this study to work, the webpage will automatically switch to the full-screen view on the next page. Please stay in the full screen mode until the study automatically switches out from it."
     ],
     [
-        hide_instr_img,
+        hide_maximize_window,
         enter_fullscreen,
         "This study has 8 short parts. I will walk you through the first part now and explain the rest later."
     ],
     [
-        show_placeHolder,
+        show_instr_img,
         false,
         "You will view " +
             TRIAL_NUM +
             " images, one at a time, as in the example below."
     ],
     [
-        hide_placeHolder,
+        hide_instr_img,
         show_mock_scale,
         "For the first part, I am interested in how <strong>" +
             RANDOM_ADJ[part_num - 1] +
@@ -80,7 +80,7 @@ const INSTRUCTIONS = [
         "Now, you are ready for the first part.<br/><br/>Press ENTER to start a few pratice!"
     ],
     [
-        startTask,
+        start_practice,
         false,
         "Great! You have completed the practice trials. Press ENTER to start for real!"
     ]
@@ -90,14 +90,14 @@ function show_maximize_window(){
     $("#fullScreenImg").css("display", "block");
 }
 
-function hide_instr_img(){
+function hide_maximize_window(){
     $("#fullScreenImg").css("display", "none");
 }
-function hide_placeHolder() {
+function hide_instr_img() {
     $("#displayImg").css("display", "none");
 }
 
-function show_placeHolder() {
+function show_instr_img() {
     $("#displayImg").attr("src", IMG_FOLDER + "/Utility/Bubble 2.jpg");
     $("#displayImg").css("display", "block");
 }
@@ -151,6 +151,13 @@ const TASK_TITLES = [
     "rt"
 ];
 
+function start_practice(){
+    $("#promptAdj").text(RANDOM_ADJ[0]);
+    task = new Task(task_options);
+    $("#taskBox").show();
+    task.trialList = shuffle_array(task.trialList);
+    task.run();
+}
 function startTask() {
     //task_options['subj'] = subj;
     $("#promptAdj").text(RANDOM_ADJ[part_num - 1]);
@@ -192,10 +199,8 @@ function listenToStartFormal() {
         if (e.key == "Enter") {
             $(document).off("keyup");
             $("#instrBox").css("display", "none");
-            instr.next();
             $("#taskBox").css("display", "block");
             task.startTime = Date.now();
-            console.log("it's me, Luigi!");
         }
     });
 }
