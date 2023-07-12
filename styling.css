@@ -25,33 +25,33 @@ button{
     width:100%;
     margin: 0px auto;
 }
-#fullPageContainer{
+#full-page-container{
     width:100%;
     position: absolute; /* Position the container element absolutely */
     top: 50%; /* Move the container element down by 50% of its height */
     left: 50%; /* Move the container element right by 50% of its width */
     transform: translate(-50%, -52%); /* Translate the container element up by 50% of its height and left by 50% of its width */
 }
-#fullScreenImg{
+#full-screen-img{
     display:none;
     position:relative;
     margin: 0 auto;
     width: 20%;
 }
-#displayImg{
+#display-img{
     display:none;
     position: relative;
     margin: 0 auto;
 }
 
-#instrText{
+#instr-text{
     position: relative;
     width:50%;
     margin:25px auto;
     text-align: center;
 }
 
-#mockRating{
+#mock-rating{
     position:relative;
     display:none; justify-content: center; align-items: center;
     /*border: 2px dashed #000;*/
@@ -103,7 +103,7 @@ button{
     margin:50px auto;
 }
 
-#consentBox{
+#consent-box{
     display:none;
     background-color:rgba(143, 134, 160, 0.618);
     width: 45%;
@@ -112,7 +112,7 @@ button{
     border: 2px dashed black;
 }
 
-#testingArea{ /*thanks ChatGPT*/
+#testing-area{ /*thanks ChatGPT*/
     display: flex; justify-content: center; align-items: center;
     width: 600px;
     height: 300px;
@@ -120,12 +120,12 @@ button{
     margin-bottom:30px;
 }
 
-#trialPrompt{
+#trial-prompt{
     color:rgb(183, 183, 183);
     margin-top:10px;
 }
 
-#promptAdj{
+#prompt-adj{
     color:white;
     font-size:larger;
 }
@@ -174,19 +174,19 @@ button{
     border-style:solid;
 }
 
-#taskImg{ /* how to make all images the same dimension?*/
+#task-img{ /* how to make all images the same dimension?*/
     display:inline-block;
     max-width: 100%;
     max-height: 300px;
 }
 
-#taskBox{
+#task-box{
     display:none;
     text-align:center;
     height:100%;
 }
 
-#ratingArea{
+#rating-area{
     position:relative;
     display:flex; justify-content: center; align-items: center;
     /*border: 2px dashed #000;*/
@@ -204,7 +204,7 @@ button{
     font-size:25px;
 }
 
-#questionBox{
+#question-box{
     position:relative;
     text-align: center;
     display:none;
@@ -212,11 +212,11 @@ button{
     margin-top:75px;
 }
 
-#questionBox label{
+#question-box label{
     font-size:24px;
 }
 
-#questionBox input[name=age]{
+#question-box input[name=age]{
     margin:0px 0px 0px 5px;
 }
 
@@ -239,13 +239,13 @@ button{
     margin:15px 0px 0px auto;
 }
 
-#congratsMess{
+#congrats-mess{
     width:1000px;
     margin: auto;
     text-align: center;
 }
 
-#debriefBox{
+#debrief-box{
     position:relative;
     display:none; justify-content: center; align-items: center;
     flex-direction: column;
@@ -260,13 +260,13 @@ button{
     width:70%;
     background-color: rgb(77, 76, 76);
 }
-#expBox{
+#exp-box{
     width:70%;
     margin: 0 auto;
     text-align:left;
 }
 
-#expBox p{
+#exp-box p{
     margin: 5px auto;
     font-size:28px;
 }

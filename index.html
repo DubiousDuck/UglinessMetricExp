@@ -10,28 +10,28 @@
     </head>
     <body>
         <noscript>It seems that JavaScript is disabled in your browser. Please go to settings and enable JavaScript for this experiment.</noscript>
-        <div id="fullPageContainer">
+        <div id="full-page-container">
             <!--instructions page-->
-            <div class="bigBox" id="instrBox">
-                <img id = "fullScreenImg" src = "images/Utility/maximize_window.png" alt='Image error: Please email oscar517730@g.ucla.edu with the message "IMG-ERRPR-fullscreen" to receive credit.'>
-                <h2 id="instrText">JS Error: Please email oscar517730@g.ucla.edu with the message "JS-ERROR" to receive credit.</h2>
-                <img id="displayImg" src="images/Utility/Bubble 2.jpg" alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-instr" to receive credit.'>
-                <div id="mockRating">
+            <div class="bigBox" id="instr-box">
+                <img id = "full-screen-img" src = "images/Utility/maximize_window.png" alt='Image error: Please email oscar517730@g.ucla.edu with the message "IMG-ERRPR-fullscreen" to receive credit.'>
+                <h2 id="instr-text">JS Error: Please email oscar517730@g.ucla.edu with the message "JS-ERROR" to receive credit.</h2>
+                <img id="display-img" src="images/Utility/Bubble 2.jpg" alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-instr" to receive credit.'>
+                <div id="mock-rating">
                     <span>Not at all</span>
-                    <button class="ratingButton" id="taskButton" value="1">1</button>
-                    <button class="ratingButton" id="taskButton" value="2">2</button>
-                    <button class="ratingButton" id="taskButton" value="3">3</button>
-                    <button class="ratingButton" id="taskButton" value="4">4</button>
-                    <button class="ratingButton" id="taskButton" value="5">5</button>
-                    <button class="ratingButton" id="taskButton" value="6">6</button>
-                    <button class="ratingButton" id="taskButton" value="7">7</button>
+                    <button class="ratingButton" id="task-button" value="1">1</button>
+                    <button class="ratingButton" id="task-button" value="2">2</button>
+                    <button class="ratingButton" id="task-button" value="3">3</button>
+                    <button class="ratingButton" id="task-button" value="4">4</button>
+                    <button class="ratingButton" id="task-button" value="5">5</button>
+                    <button class="ratingButton" id="task-button" value="6">6</button>
+                    <button class="ratingButton" id="task-button" value="7">7</button>
                     <span>Extremely</span>
                 </div>
-                <button class="myButtons" id="nextButton" onclick='instr.next()'>Next</button>
+                <button class="myButtons" id="next-button" onclick='instr.next()'>Next</button>
             </div>
 
             <!--Consent Box-->
-            <div class="bigBox" id="consentBox">
+            <div class="bigBox" id="consent-box">
                 <p>informed consent content goes here...</p>
                 <p>informed consent content goes here...</p>
                 <p>informed consent content goes here...</p>
@@ -45,43 +45,43 @@
             </div>
 
             <!--Task Box-->
-            <div class="bigBox" id="taskBox">
+            <div class="bigBox" id="task-box">
                 <div id="progress">
-                    <p style="margin-bottom:10px">Part <span id="partNum">0</span>: <span id="progressBar">0</span>% done</p>
+                    <p style="margin-bottom:10px">Part <span id="part-num">0</span>: <span id="progressBar">0</span>% done</p>
                 </div>
-                <h1 id="trialPrompt">How  <span id="promptAdj"></span>  do you find this image is?</h1>
-                <div id="testingArea">
-                    <img id="taskImg" src="images/intentionalBlank.png" alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-test" to receive credit.'>
+                <h1 id="trial-prompt">How  <span id="prompt-adj"></span>  do you find this image is?</h1>
+                <div id="testing-area">
+                    <img id="task-img" src="images/intentionalBlank.png" alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-test" to receive credit.'>
                     <img id="buffer-img" style="display:none">
                 </div>
-                <div id="ratingArea">
+                <div id="rating-area">
                     <span>Not at all</span>
-                    <button class="ratingButton" id="taskButton" value="1">1</button>
-                    <button class="ratingButton" id="taskButton" value="2">2</button>
-                    <button class="ratingButton" id="taskButton" value="3">3</button>
-                    <button class="ratingButton" id="taskButton" value="4">4</button>
-                    <button class="ratingButton" id="taskButton" value="5">5</button>
-                    <button class="ratingButton" id="taskButton" value="6">6</button>
-                    <button class="ratingButton" id="taskButton" value="7">7</button>
+                    <button class="ratingButton" id="task-button" value="1">1</button>
+                    <button class="ratingButton" id="task-button" value="2">2</button>
+                    <button class="ratingButton" id="task-button" value="3">3</button>
+                    <button class="ratingButton" id="task-button" value="4">4</button>
+                    <button class="ratingButton" id="task-button" value="5">5</button>
+                    <button class="ratingButton" id="task-button" value="6">6</button>
+                    <button class="ratingButton" id="task-button" value="7">7</button>
                     <span>Extremely</span>
                 </div>
             </div>
         </div>
         <!--Disclosure Questions-->
-        <div class="bigBox" id="questionBox">
+        <div class="bigBox" id="question-box">
             <h2>You are almost done! Please answer these last questions:</h2>
             <div class="question">
                 <h3 style="margin-bottom:10px">Did you complete this experiment seriously throughout (without responding randomly)?</h3>
                 <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
                 <label><input type="radio" name="serious" value="no">No, I didn't.</label>
                 <label><input type="radio" name="serious" value="yes">Yes, I did.</label>
-                <h3 class="warning" id="seriousWarning">Please select an option.</h3>
+                <h3 class="warning" id="serious-warning">Please select an option.</h3>
             </div>
             <div class="question">
                 <h3 style="margin-bottom:10px">Was any part of the procedure unclear? Did you have any problems completing any of the tasks?</h3>
                 <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
                 <textarea id="problems"></textarea>
-                <h3 class="warning" id="problemsWarning">Please answer this question.</h3>
+                <h3 class="warning" id="problems-warming">Please answer this question.</h3>
             </div>
             <div class="question">
                 <h3 style="margin-bottom:10px">What is your age?</h3>
@@ -89,7 +89,7 @@
                     <label for="age">Please enter your age: </label>
                     <input type="number" name="age" min="18" max="120">
                 </div>
-                <h3 class="warning" id="ageWarning">Please enter a valid age</h3>
+                <h3 class="warning" id="age-warning">Please enter a valid age</h3>
             </div>
             <div class="question">
                 <h3 style="margin-bottom:10px">What is your gender?</h3>
@@ -97,17 +97,17 @@
                 <label><input type="radio" name="gender" value="M">Male</label>
                 <label><input type="radio" name="gender" value="O">Others</label>
                 <label><input type="radio" name="gender" value="N">Rather not to say</label>
-                <h3 class="warning" id="genderWarning">Please select an option</h3>
+                <h3 class="warning" id="gender-warning">Please select an option</h3>
             </div>
-            <button class="myButtons" id="quizSubmitButton" onclick="submitQuestion()">Submit</button>
+            <button class="myButtons" id="quiz-submit-button" onclick="submit_question()">Submit</button>
         </div>
         <!--debriefing-->
-        <div class="bigBox" id="debriefBox">
-            <h2 id="congratsMess">Now there's one step left: Click END to get your credit! Thank you very much!<br /><br />
+        <div class="bigBox" id="debrief-box">
+            <h2 id="congrats-mess">Now there's one step left: Click END to get your credit! Thank you very much!<br /><br />
             Interested in what we are testing? See below for more information.</h2>
             <button class='myButtons' onclick='go_to_completion_page()'>END</button>
             <br></br><div class="divider"></div>
-            <div class="bigBox" id="expBox">
+            <div class="bigBox" id="exp-box">
                 <h1>What “looks bad”? </h1>
                 <p>We are interested in finding out what “looks bad” for people. An obvious answer would be just whatever that doesn't look aesthetically pleasing. However, is it possible that “ugliness” serves special function that it has more depth and dimension?</p>
                 <br></br>

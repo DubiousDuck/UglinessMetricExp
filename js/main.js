@@ -87,47 +87,47 @@ const INSTRUCTIONS = [
 ]; //the attributes are: pre_function, post_function, display text
 
 function show_maximize_window(){
-    $("#fullScreenImg").css("display", "block");
+    $("#full-screen-img").css("display", "block");
 }
 
 function hide_maximize_window(){
-    $("#fullScreenImg").css("display", "none");
+    $("#full-screen-img").css("display", "none");
 }
 function hide_instr_img() {
-    $("#displayImg").css("display", "none");
+    $("#display-img").css("display", "none");
 }
 
 function show_instr_img() {
-    $("#displayImg").attr("src", IMG_FOLDER + "/Utility/Bubble 2.jpg");
-    $("#displayImg").css("display", "block");
+    $("#display-img").attr("src", IMG_FOLDER + "/Utility/Bubble 2.jpg");
+    $("#display-img").css("display", "block");
 }
 
 function show_mock_scale(){
-    $("#mockRating").css("display", "flex");
+    $("#mock-rating").css("display", "flex");
 }
 
 function hide_mock_scale(){
-    $("#mockRating").css("display", "none");
+    $("#mock-rating").css("display", "none");
 }
 function show_consent() {
-    $("#nextButton").css("display", "none");
-    $("#consentBox").css("display", "block");
+    $("#next-button").css("display", "none");
+    $("#consent-box").css("display", "block");
     $("#consentResponse").css("display", "block");
     $(document).keyup(function (e) {
         console.log("keypressed!");
         if (e.key == "Enter") {
             $(document).off("keyup");
             instr.next();
-            $("#instrBox").css("display", "none");
-            $("#consentBox").css("display", "none");
+            $("#instr-box").css("display", "none");
+            $("#consent-box").css("display", "none");
             console.log("it's me, Mario!");
         }
     });
 }
 
 let instr_options = {
-    textBox: $("#instrBox"),
-    textElement: $("#instrText"),
+    textBox: $("#instr-box"),
+    textElement: $("#instr-text"),
     arr: INSTRUCTIONS,
     quizConditions: ["onlyQ"]
 };
@@ -152,34 +152,34 @@ const TASK_TITLES = [
 ];
 
 function start_practice(){
-    $("#promptAdj").text(RANDOM_ADJ[0]);
+    $("#prompt-adj").text(RANDOM_ADJ[0]);
     task = new Task(task_options);
-    $("#taskBox").show();
+    $("#task-box").show();
     task.trialList = shuffle_array(task.trialList);
     task.run();
 }
-function startTask() {
+function start_task() {
     //task_options['subj'] = subj;
-    $("#promptAdj").text(RANDOM_ADJ[part_num - 1]);
+    $("#prompt-adj").text(RANDOM_ADJ[part_num - 1]);
     task = new Task(task_options);
-    $("#taskBox").show();
+    $("#task-box").show();
     //subj.detectVisibilityStart();
     task.trialList = shuffle_array(task.trialList);
     task.run(); //central function call for task to run
 }
 
 //the functions below are provided as member functions to be passed to the Task class
-function taskUpdate(formal_trial, last, this_trial, next_trial, path) {
+function task_update(formal_trial, last, this_trial, next_trial, path) {
     //use formal_trial parameter to determine whether the trial is practice or formal
     task.stimName = this_trial;
-    $('#partNum').text(part_num);
+    $('#part-num').text(part_num);
     $('#progressBar').text(task.progress);
-    $("#taskImg").attr("src", path + this_trial);
+    $("#task-img").attr("src", path + this_trial);
     console.log(this_trial);
     if (formal_trial) {
         //the first time switched to formal, remind the participants that we are now switiching
         if (task.pracTrialN != 0 && task.trialNum == 1) {
-            formalTrialNotice();
+            formal_trial_notice();
         }
     }
     if (!last) {
@@ -187,46 +187,46 @@ function taskUpdate(formal_trial, last, this_trial, next_trial, path) {
     }
 }
 
-function formalTrialNotice() {
+function formal_trial_notice() {
     instr.startTimer();
-    listenToStartFormal();
-    $("#taskBox").css("display", "none");
-    $("#instrBox").css("display", "block");
+    listen_to_start_formal();
+    $("#task-box").css("display", "none");
+    $("#instr-box").css("display", "block");
 }
 
-function listenToStartFormal() {
+function listen_to_start_formal() {
     $(document).keyup(function (e) {
         if (e.key == "Enter") {
             $(document).off("keyup");
-            $("#instrBox").css("display", "none");
-            $("#taskBox").css("display", "block");
+            $("#instr-box").css("display", "none");
+            $("#task-box").css("display", "block");
             task.startTime = Date.now();
         }
     });
 }
 
 function rating() {
-    $("#taskImg").show();
+    $("#task-img").show();
     $(".ratingButton").mouseup(function (event) {
         $(".ratingButton").unbind("mouseup");
-        task.inView = check_fully_in_view($("#taskImg"));
-        $("#taskImg").hide();
+        task.inView = check_fully_in_view($("#task-img"));
+        $("#task-img").hide();
         let target = $(event.target).closest(".rating-button"); //choose the closest button to the pointer
         task.end(target.attr("value"));
     });
 }
 
-function endTask() {
+function end_task() {
     //subj.detectVisibilityEnd();
-    if (part_num < BLOCK_N) interBlockRest();
-    else endOfTrial();
+    if (part_num < BLOCK_N) inter_block_rest();
+    else end_of_trial();
     //task.save();
 }
 
-function interBlockRest() {
-    $("#taskBox").css("display", "none");
-    $("#instrBox").css("display", "block");
-    $("#instrText").html(
+function inter_block_rest() {
+    $("#task-box").css("display", "none");
+    $("#instr-box").css("display", "block");
+    $("#instr-text").html(
         "You have completed " +
             part_num +
             " out of " +
@@ -239,18 +239,18 @@ function interBlockRest() {
         console.log("keypressed!");
         if (e.key == "Enter") {
             $(document).off("keyup");
-            $("#instrBox").css("display", "none");
-            startNextPart();
+            $("#instr-box").css("display", "none");
+            start_next_part();
         }
     });
 }
-function startNextPart() {
+function start_next_part() {
     //increase block count and restart task
     if (part_num == 1) {
         task_options.pracTrialN = 0;
     }
     part_num += 1;
-    startTask();
+    start_task();
 }
 let task_options = {
     titles: TASK_TITLES,
@@ -263,16 +263,16 @@ let task_options = {
     trialList: IMG_FILES,
     pracList: RATING_PRACTICE_LIST,
     //intertrialInterval: INTERTRIAL_INTERVAL,
-    updateFunc: taskUpdate,
+    updateFunc: task_update,
     trialFunc: rating,
-    endExptFunc: endTask,
+    endExptFunc: end_task,
     progressInfo: true
 };
 
-function endOfTrial() {
+function end_of_trial() {
     //pull up question box
-    $("#taskBox").hide();
-    $("#questionBox").show();
+    $("#task-box").hide();
+    $("#question-box").show();
 }
 //  ######  ##     ## ########        ## ########  ######  ########
 // ##    ## ##     ## ##     ##       ## ##       ##    ##    ##
@@ -282,36 +282,36 @@ function endOfTrial() {
 // ##    ## ##     ## ##     ## ##    ## ##       ##    ##    ##
 //  ######   #######  ########   ######  ########  ######     ##
 
-function submitQuestion() {
+function submit_question() {
     const openQueNames = ["age", "problems"];
     const choiceNames = ["serious", "gender"];
-    if (checkAnswered(openQueNames, choiceNames)) {
-        $("#questionBox").css("display", "none");
-        $("#debriefBox").css("display", "flex");
+    if (check_answered(openQueNames, choiceNames)) {
+        $("#question-box").css("display", "none");
+        $("#debrief-box").css("display", "flex");
         $("#endingShortcut").hide();
     }
 }
 
-function checkAnswered(openEndedQue, choiceQue) {
+function check_answered(openEndedQue, choiceQue) {
     let allResponded = true;
     for (let q of openEndedQue) {
         let value = $("input[name=" + q + "]").val();
         if (value == "") {
-            $("#" + q + "Warning").css("display", "block");
+            $("#" + q + "-warning").css("display", "block");
             allResponded = false;
-        } else $("#" + q + "Warning").css("display", "none");
+        } else $("#" + q + "-warning").css("display", "none");
     }
     for (let q of choiceQue) {
         let value = $("input[name=" + q + "]:checked").val();
         if (value === undefined) {
-            $("#" + q + "Warning").css("display", "block");
+            $("#" + q + "-warning").css("display", "block");
             allResponded = false;
-        } else $("#" + q + "Warning").css("display", "none");
+        } else $("#" + q + "-warning").css("display", "none");
     }
     if ($("#problems").val() == ""){
-        $("#problemsWarning").show();
+        $("#problems-warming").show();
         allResponded = false;
-    }else $("#problemsWarning").hide();
+    }else $("#problems-warming").hide();
     return allResponded;
 }
 
@@ -324,8 +324,8 @@ function go_to_completion_page(){
 }
 
 function go_to_ending(){
-    $("#instrBox").hide();
-    $("#debriefBox").show();
+    $("#instr-box").hide();
+    $("#debrief-box").show();
     $("#endingShortcut").hide();
     $("#endingShortcut").hide();
 }
