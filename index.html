@@ -10,28 +10,25 @@
     </head>
     <body>
         <noscript>It seems that JavaScript is disabled in your browser. Please go to settings and enable JavaScript for this experiment.</noscript>
-        <div id="full-page-container">
-            <!--instructions page-->
-            <div class="bigBox" id="instr-box">
-                <img id = "full-screen-img" src = "images/Utility/maximize_window.png" alt='Image error: Please email oscar517730@g.ucla.edu with the message "IMG-ERRPR-fullscreen" to receive credit.'>
-                <h2 id="instr-text">JS Error: Please email oscar517730@g.ucla.edu with the message "JS-ERROR" to receive credit.</h2>
-                <img id="display-img" src="images/Utility/Bubble 2.jpg" alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-instr" to receive credit.'>
-                <div id="mock-rating">
-                    <span>Not at all</span>
-                    <button class="ratingButton" id="task-button" value="1">1</button>
-                    <button class="ratingButton" id="task-button" value="2">2</button>
-                    <button class="ratingButton" id="task-button" value="3">3</button>
-                    <button class="ratingButton" id="task-button" value="4">4</button>
-                    <button class="ratingButton" id="task-button" value="5">5</button>
-                    <button class="ratingButton" id="task-button" value="6">6</button>
-                    <button class="ratingButton" id="task-button" value="7">7</button>
-                    <span>Extremely</span>
-                </div>
-                <button class="myButtons" id="next-button" onclick='instr.next()'>Next</button>
+        <!--instructions page-->
+        <div class="big-box fixed-box" id="instr-box">
+            <img id = "full-screen-img" src = "images/Utility/maximize_window.png" alt='Image error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-fullscreen" to receive credit.'>
+            <h2 id="instr-text">JS Error: Please email oscar517730@g.ucla.edu with the message "JS-ERROR" to receive credit.</h2>
+            <img id="display-img" src="images/Utility/Bubble 2.jpg" alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-instr" to receive credit.'>
+            <div id="mock-rating">
+                <span>Not at all</span>
+                <button class="rating-button" id="task-button" value="1">1</button>
+                <button class="rating-button" id="task-button" value="2">2</button>
+                <button class="rating-button" id="task-button" value="3">3</button>
+                <button class="rating-button" id="task-button" value="4">4</button>
+                <button class="rating-button" id="task-button" value="5">5</button>
+                <button class="rating-button" id="task-button" value="6">6</button>
+                <button class="rating-button" id="task-button" value="7">7</button>
+                <span>Extremely</span>
             </div>
-
+            <button class="my-buttons" id="next-button" onclick='instr.next()'>Next</button>
             <!--Consent Box-->
-            <div class="bigBox" id="consent-box">
+            <div id="consent-box">
                 <p>informed consent content goes here...</p>
                 <p>informed consent content goes here...</p>
                 <p>informed consent content goes here...</p>
@@ -42,33 +39,34 @@
                 <p>informed consent content goes here...</p>
                 <p>informed consent content goes here...</p>
                 <p>informed consent content goes here...</p>
-            </div>
-
-            <!--Task Box-->
-            <div class="bigBox" id="task-box">
-                <div id="progress">
-                    <p style="margin-bottom:10px">Part <span id="part-num">0</span>: <span id="progressBar">0</span>% done</p>
-                </div>
-                <h1 id="trial-prompt">How  <span id="prompt-adj"></span>  do you find this image is?</h1>
-                <div id="testing-area">
-                    <img id="task-img" src="images/intentionalBlank.png" alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-test" to receive credit.'>
-                    <img id="buffer-img" style="display:none">
-                </div>
-                <div id="rating-area">
-                    <span>Not at all</span>
-                    <button class="ratingButton" id="task-button" value="1">1</button>
-                    <button class="ratingButton" id="task-button" value="2">2</button>
-                    <button class="ratingButton" id="task-button" value="3">3</button>
-                    <button class="ratingButton" id="task-button" value="4">4</button>
-                    <button class="ratingButton" id="task-button" value="5">5</button>
-                    <button class="ratingButton" id="task-button" value="6">6</button>
-                    <button class="ratingButton" id="task-button" value="7">7</button>
-                    <span>Extremely</span>
-                </div>
             </div>
         </div>
+
+        <!--Task Box-->
+        <div class="big-box fixed-box" id="task-box">
+            <div id="progress">
+                <p id='progress-text'>Part <span id="part-num">0</span>: <span id="progressBar">0</span>% done</p>
+            </div>
+            <h1 id="trial-prompt">How  <span id="prompt-adj"></span>  do you find this image is?</h1>
+            <div id="testing-area">
+                <img id="task-img" src="images/intentionalBlank.png" alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-test" to receive credit.' />
+                <img id="buffer-img" />
+            </div>
+            <div id="rating-area">
+                <span>Not at all</span>
+                <button class="rating-button" id="task-button" value="1">1</button>
+                <button class="rating-button" id="task-button" value="2">2</button>
+                <button class="rating-button" id="task-button" value="3">3</button>
+                <button class="rating-button" id="task-button" value="4">4</button>
+                <button class="rating-button" id="task-button" value="5">5</button>
+                <button class="rating-button" id="task-button" value="6">6</button>
+                <button class="rating-button" id="task-button" value="7">7</button>
+                <span>Extremely</span>
+            </div>
+        </div>
+
         <!--Disclosure Questions-->
-        <div class="bigBox" id="question-box">
+        <div class="big-box" id="question-box">
             <h2>You are almost done! Please answer these last questions:</h2>
             <div class="question">
                 <h3 style="margin-bottom:10px">Did you complete this experiment seriously throughout (without responding randomly)?</h3>
@@ -76,6 +74,13 @@
                 <label><input type="radio" name="serious" value="no">No, I didn't.</label>
                 <label><input type="radio" name="serious" value="yes">Yes, I did.</label>
                 <h3 class="warning" id="serious-warning">Please select an option.</h3>
+            </div>
+            <div class="question">
+                <h3 style="margin-bottom:10px">Was the browser in the full-screen mode throughout the experiment?</h3>
+                <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
+                <label><input type="radio" name="maximized" value="no">No, it wasn't.</label>
+                <label><input type="radio" name="maximized" value="yes">Yes, it was.</label>
+                <h3 class="warning" id="maximized-warning">Please select an option.</h3>
             </div>
             <div class="question">
                 <h3 style="margin-bottom:10px">Was any part of the procedure unclear? Did you have any problems completing any of the tasks?</h3>
@@ -99,13 +104,14 @@
                 <label><input type="radio" name="gender" value="N">Rather not to say</label>
                 <h3 class="warning" id="gender-warning">Please select an option</h3>
             </div>
-            <button class="myButtons" id="quiz-submit-button" onclick="submit_question()">Submit</button>
+            <button class="my-buttons" id="quiz-submit-button" onclick="submit_question()">Submit</button>
         </div>
+
         <!--debriefing-->
-        <div class="bigBox" id="debrief-box">
+        <div class="big-box" id="debrief-box">
             <h2 id="congrats-mess">Now there's one step left: Click END to get your credit! Thank you very much!<br /><br />
             Interested in what we are testing? See below for more information.</h2>
-            <button class='myButtons' onclick='go_to_completion_page()'>END</button>
+            <button class='my-buttons' onclick='go_to_completion_page()'>END</button>
             <br></br><div class="divider"></div>
             <div class="bigBox" id="exp-box">
                 <h1>What “looks bad”? </h1>
@@ -115,9 +121,10 @@
                 <br></br>
                 <p>Thank you again for your work! Please press the button below to go back to the top of the page.</p>
             </div>
-            <button class="myButtons" onclick = 'go_to_top()'>Back to Top</button>
+            <button class="my-buttons" onclick = 'go_to_top()'>Back to Top</button>
         </div>
-        <!--<button class = "myButtons" id="endingShortcut" onclick="go_to_ending()">To Last Page</button> -XXX TODO-->
+
+        <!--<button class = "myButtons" id="ending-shortcut" onclick="go_to_ending()">To Last Page</button> -XXX TODO-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="js/stimList.js"></script>
         <script src='js/func.js'></script>

@@ -1,64 +1,69 @@
-body{
+body {
     background-color: rgb(25, 23, 25);
-    font-family: 'Roboto', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Roboto", Calibri, "Trebuchet MS", sans-serif;
     font-size: 21px;
-    color:rgb(249, 240, 255);
+    color: rgb(249, 240, 255);
 }
-h3{
-    min-width:28px;
-    font-size:28px;
+h3 {
+    min-width: 28px;
+    font-size: 28px;
 }
-h2{
+h2 {
     min-width: 35px;
 }
-h1{
-    min-width:48px;
+h1 {
+    min-width: 48px;
 }
-span{
-    font-size:21px;
-    margin-top:10px;
+span {
+    font-size: 21px;
+    margin-top: 10px;
 }
-button{
-    font-size:21px;
+button {
+    font-size: 21px;
 }
-.bigBox{
-    width:100%;
+.big-box {
+    width: 100%;
     margin: 0px auto;
 }
-#full-page-container{
-    width:100%;
+.fixed-box {
+    margin: 0;
     position: absolute; /* Position the container element absolutely */
     top: 50%; /* Move the container element down by 50% of its height */
     left: 50%; /* Move the container element right by 50% of its width */
-    transform: translate(-50%, -52%); /* Translate the container element up by 50% of its height and left by 50% of its width */
+    transform: translate(
+        -50%,
+        -52%
+    ); /* Translate the container element up by 50% of its height and left by 50% of its width */
 }
-#full-screen-img{
-    display:none;
-    position:relative;
+#full-screen-img {
+    display: none;
+    position: relative;
     margin: 0 auto;
     width: 20%;
 }
-#display-img{
-    display:none;
+#display-img {
+    display: none;
     position: relative;
     margin: 0 auto;
 }
 
-#instr-text{
+#instr-text {
     position: relative;
-    width:50%;
-    margin:25px auto;
+    width: 50%;
+    margin: 25px auto;
     text-align: center;
 }
 
-#mock-rating{
-    position:relative;
-    display:none; justify-content: center; align-items: center;
+#mock-rating {
+    position: relative;
+    display: none;
+    justify-content: center;
+    align-items: center;
     /*border: 2px dashed #000;*/
-    width:100%;
+    width: 100%;
     margin: 60px auto;
 }
-.myButtons{
+.my-buttons {
     display: block;
     position: relative;
     margin: 25px auto;
@@ -68,20 +73,16 @@ button{
     text-align: center;
     border-radius: 10px;
     background: #5d5663;
-    color:rgb(249, 240, 255);
+    color: rgb(249, 240, 255);
     cursor: pointer;
-    border-width:0;
+    border-width: 0;
 }
 
-.myButtons:hover{
+.my-buttons:hover {
     background-color: #988f9c;
 }
 
-#instrQuiz{
-    display:none;
-}
-
-.choices{
+.choices {
     display: block;
     position: relative;
     margin: 10px auto;
@@ -92,45 +93,37 @@ button{
     cursor: pointer;
 }
 
-#questionTitle{
-    text-align: center;
-    margin: 50px auto;
-}
-
-#quizWarn{
+#consent-box {
     display: none;
-    text-align: center;
-    margin:50px auto;
-}
-
-#consent-box{
-    display:none;
-    background-color:rgba(143, 134, 160, 0.618);
+    background-color: rgba(143, 134, 160, 0.618);
     width: 45%;
     height: 300px;
     overflow: auto;
     border: 2px dashed black;
 }
 
-#testing-area{ /*thanks ChatGPT*/
-    display: flex; justify-content: center; align-items: center;
+#testing-area {
+    /*thanks ChatGPT*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 600px;
     height: 300px;
-    margin:10px auto;
-    margin-bottom:30px;
+    margin: 10px auto;
+    margin-bottom: 30px;
 }
 
-#trial-prompt{
-    color:rgb(183, 183, 183);
-    margin-top:10px;
+#trial-prompt {
+    color: rgb(183, 183, 183);
+    margin-top: 10px;
 }
 
-#prompt-adj{
-    color:white;
-    font-size:larger;
+#prompt-adj {
+    color: white;
+    font-size: larger;
 }
-.ratingButton{
-    display:inline-block;
+.rating-button {
+    display: inline-block;
     position: relative;
     margin: 10px 5px auto;
     width: 70px;
@@ -139,138 +132,146 @@ button{
     text-align: center;
     border-radius: 10px;
     background: #775388;
-    color:rgb(249, 240, 255);
+    color: rgb(249, 240, 255);
     cursor: pointer;
-    border-width:0;
+    border-width: 0;
 }
 
-.ratingButton[value="1"] {
-    background:#7c7b7c;
-    margin-left:30px;
-  }
-.ratingButton[value='2']{
-    background:#727173;
+.rating-button[value="1"] {
+    background: #7c7b7c;
+    margin-left: 30px;
 }
-.ratingButton[value='3']{
-    background:#6b6a6b;
+.rating-button[value="2"] {
+    background: #727173;
 }
-.ratingButton[value='4']{
-    background:#5f5e5f;
+.rating-button[value="3"] {
+    background: #6b6a6b;
 }
-.ratingButton[value='5']{
-    background:#494848;
+.rating-button[value="4"] {
+    background: #5f5e5f;
 }
-.ratingButton[value='6']{
-    background:#424141;
+.rating-button[value="5"] {
+    background: #494848;
 }
-.ratingButton[value='7']{
-    background:#343333;
-    margin-right:30px;
+.rating-button[value="6"] {
+    background: #424141;
 }
-  
-.ratingButton:hover{
-    border-color:white;
-    border-width:3px;
-    border-style:solid;
+.rating-button[value="7"] {
+    background: #343333;
+    margin-right: 30px;
 }
 
-#task-img{ /* how to make all images the same dimension?*/
-    display:inline-block;
+.rating-button:hover {
+    border-color: white;
+    border-width: 3px;
+    border-style: solid;
+}
+
+#task-img {
+    /* how to make all images the same dimension?*/
+    display: inline-block;
     max-width: 100%;
     max-height: 300px;
 }
-
-#task-box{
-    display:none;
-    text-align:center;
-    height:100%;
+#buffer-img {
+    display: none;
 }
 
-#rating-area{
-    position:relative;
-    display:flex; justify-content: center; align-items: center;
+#task-box {
+    display: none;
+    text-align: center;
+    height: 100%;
+}
+
+#rating-area {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /*border: 2px dashed #000;*/
-    width:80%;
+    width: 80%;
     margin: 20px auto;
 }
 
-#progress{
-    text-align:center;
-    font-size: 25px;
-    color:rgb(183, 183, 183);
-}
-
-#progress span{
-    font-size:25px;
-}
-
-#question-box{
-    position:relative;
+#progress {
     text-align: center;
-    display:none;
-    height:100%;
-    margin-top:75px;
+    font-size: 25px;
+    color: rgb(183, 183, 183);
 }
 
-#question-box label{
-    font-size:24px;
+#progress span {
+    font-size: 25px;
 }
 
-#question-box input[name=age]{
-    margin:0px 0px 0px 5px;
+#progress-text {
+    margin-bottom: 10px;
 }
 
-#problems{
-    width:40%;
-    height:100px;
-}
-.small-dim{
-    font-size:21px;
-    margin-top:0px;
-    margin-bottom:20px;
-}
-.smallContainer{
-    display:flex;
-    justify-content: center;
-}
-.warning{
-    color:red;
-    display:none;
-    margin:15px 0px 0px auto;
+#question-box {
+    position: relative;
+    text-align: center;
+    display: none;
+    height: 100%;
+    margin-top: 75px;
 }
 
-#congrats-mess{
-    width:1000px;
+#question-box label {
+    font-size: 24px;
+}
+
+#question-box input[name="age"] {
+    margin: 0px 0px 0px 5px;
+}
+
+#problems {
+    width: 40%;
+    height: 100px;
+}
+.small-dim {
+    font-size: 21px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+.warning {
+    color: red;
+    display: none;
+    margin: 15px 0px 0px auto;
+}
+
+#congrats-mess {
+    width: 1000px;
     margin: auto;
     text-align: center;
 }
 
-#debrief-box{
-    position:relative;
-    display:none; justify-content: center; align-items: center;
+#debrief-box {
+    position: relative;
+    display: none;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     text-align: center;
-    width:100%;
-    margin-top:100px;
+    width: 100%;
+    margin-top: 100px;
 }
 
-.divider{
+.divider {
     height: 1px;
     margin: 0 auto;
-    width:70%;
+    width: 70%;
     background-color: rgb(77, 76, 76);
 }
-#exp-box{
-    width:70%;
+#exp-box {
+    width: 70%;
     margin: 0 auto;
-    text-align:left;
+    text-align: left;
 }
 
-#exp-box p{
+#exp-box p {
     margin: 5px auto;
-    font-size:28px;
+    font-size: 28px;
 }
 
-#endingShortcut{
-    position:relative;
+#ending-shortcut {
+    position: relative;
 }
