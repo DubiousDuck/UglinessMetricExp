@@ -1,6 +1,6 @@
 //img paths
 const BLOCK_N = 1;
-const IMG_FOLDER = "images/";
+const IMG_FOLDER = "cropped_images/";
 
 const PRAC_IMG = [
     "Utility/Bottle 1.jpg",
@@ -81,7 +81,7 @@ const INSTRUCTIONS = [
     [
         false,
         false,
-        "Great! You have completed the practice trials. Press ENTER to start for real!"
+        "Great! You have completed the practice trials.<br/> Press ENTER to start for real!"
     ]
 ]; //the attributes are: pre_function, post_function, display text
 
@@ -294,12 +294,18 @@ const SUBJ_TITLES = [
 ];
 
 function submit_question() {
-    let open_que_names = ["age", "problems"];
-    let choice_names = ["serious", "gender"];
-    if (check_answered(open_que_names, choice_names)) {
+    let open_que_names = ["age"];
+    let choice_names = ["serious", "gender", "maximized"];
+    let non_input_names = ["problems"];
+    if (check_answered(open_que_names, choice_names, non_input_names)) {
         $("#question-box").hide();
         for (let q of open_que_names) {
-            subj[q] = $("#" + q)
+            subj[q] = $("input[name=" + q + "]")
+                .val()
+                .replace(/(?:\r\n|\r|\n)/g, "<br />");
+        }
+        for (let q of non_input_names){
+            subj[q] = $("#"+q)
                 .val()
                 .replace(/(?:\r\n|\r|\n)/g, "<br />");
         }
@@ -308,19 +314,22 @@ function submit_question() {
             (d) => d < INSTR_READING_TIME_MIN
         ).length;
         subj.submitAnswers();
+        go_to_top();
         $("#debrief-box").css("display", "flex");
         $("#ending-shortcut").hide();
     }
 }
 
-function check_answered(open_ended_que, choice_que) {
+function check_answered(open_ended_que, choice_que, non_input_que) {
     let all_responded = true;
     for (let q of open_ended_que) {
         let value = $("input[name=" + q + "]").val();
         if (value == "") {
             $("#" + q + "-warning").css("display", "block");
             all_responded = false;
-        } else $("#" + q + "-warning").hide();
+        } else{
+            $("#" + q + "-warning").hide();
+        }
     }
     for (let q of choice_que) {
         let value = $("input[name=" + q + "]:checked").val();
@@ -329,26 +338,23 @@ function check_answered(open_ended_que, choice_que) {
             all_responded = false;
         } else $("#" + q + "-warning").hide();
     }
-    if ($("#problems").val() == "") {
-        $("#problems-warming").show();
-        all_responded = false;
-    } else $("#problems-warming").hide();
+    for (let q of non_input_que){
+        let val = $("#"+q).val();
+        if (val == "") {
+            $("#" + q + "-warning").css("display", "block");
+            all_responded = false;
+        } else $("#" + q + "-warning").hide();
+    }
+    
     return all_responded;
 }
 
 function go_to_top() {
-    $("html, body").animate({ scrollTop: 0 }, "slow");
+    $("html, body").animate({ scrollTop: 0 }, "fast");
 }
 
 function go_to_completion_page() {
     exit_fullscreen();
-}
-
-function go_to_ending() {
-    $("#instr-box").hide();
-    $("#debrief-box").show();
-    $("#ending-shortcut").hide();
-    $("#ending-shortcut").hide();
 }
 
 let subj_options = {
@@ -375,7 +381,7 @@ let subj_options = {
 $(document).ready(function () {
     load_img(0, IMG_FOLDER, IMG_FILES);
     subj = new Subject(subj_options);
-    subj.partNum = 0;
+    subj.partNum = 1;
     instr = new Instructions(instr_options);
     instr.start();
 });

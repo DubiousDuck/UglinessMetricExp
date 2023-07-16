@@ -49,18 +49,18 @@
             </div>
             <h1 id="trial-prompt">How  <span id="prompt-adj"></span>  do you find this image is?</h1>
             <div id="testing-area">
-                <img id="task-img" src="images/intentionalBlank.png" alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-test" to receive credit.' />
+                <img id="task-img" src="cropped_images/Utility/Bubble 2.jpg" alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-test" to receive credit.' />
                 <img id="buffer-img" />
             </div>
             <div id="rating-area">
                 <span>Not at all</span>
-                <button class="rating-button" id="task-button" value="1">1</button>
-                <button class="rating-button" id="task-button" value="2">2</button>
-                <button class="rating-button" id="task-button" value="3">3</button>
-                <button class="rating-button" id="task-button" value="4">4</button>
-                <button class="rating-button" id="task-button" value="5">5</button>
-                <button class="rating-button" id="task-button" value="6">6</button>
-                <button class="rating-button" id="task-button" value="7">7</button>
+                <button class="rating-button" value="1">1</button>
+                <button class="rating-button" value="2">2</button>
+                <button class="rating-button" value="3">3</button>
+                <button class="rating-button" value="4">4</button>
+                <button class="rating-button" value="5">5</button>
+                <button class="rating-button" value="6">6</button>
+                <button class="rating-button" value="7">7</button>
                 <span>Extremely</span>
             </div>
         </div>
@@ -68,41 +68,42 @@
         <!--Disclosure Questions-->
         <div class="big-box" id="question-box">
             <h2>You are almost done! Please answer these last questions:</h2>
+            <br/>
             <div class="question">
-                <h3 style="margin-bottom:10px">Did you complete this experiment seriously throughout (without responding randomly)?</h3>
+                <h3>Did you complete this experiment seriously throughout (without responding randomly)?</h3>
                 <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
-                <label><input type="radio" name="serious" value="no">No, I didn't.</label>
-                <label><input type="radio" name="serious" value="yes">Yes, I did.</label>
+                <label class="option"><input type="radio" name="serious" value="no">No, I didn't.</label>
+                <label class="option"><input type="radio" name="serious" value="yes">Yes, I did.</label>
                 <h3 class="warning" id="serious-warning">Please select an option.</h3>
             </div>
             <div class="question">
-                <h3 style="margin-bottom:10px">Was the browser in the full-screen mode throughout the experiment?</h3>
+                <h3>Was the browser in the full-screen mode throughout the experiment?</h3>
                 <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
-                <label><input type="radio" name="maximized" value="no">No, it wasn't.</label>
-                <label><input type="radio" name="maximized" value="yes">Yes, it was.</label>
+                <label class="option"><input type="radio" name="maximized" value="no">No, it wasn't.</label>
+                <label class="option"><input type="radio" name="maximized" value="yes">Yes, it was.</label>
                 <h3 class="warning" id="maximized-warning">Please select an option.</h3>
             </div>
             <div class="question">
-                <h3 style="margin-bottom:10px">Was any part of the procedure unclear? Did you have any problems completing any of the tasks?</h3>
-                <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
-                <textarea id="problems"></textarea>
-                <h3 class="warning" id="problems-warming">Please answer this question.</h3>
+                <h3>What is your gender?</h3>
+                <label class="option"><input type="radio" name="gender" value="F">Female</label>
+                <label class="option"><input type="radio" name="gender" value="M">Male</label>
+                <label class="option"><input type="radio" name="gender" value="O">Others</label>
+                <label class="option"><input type="radio" name="gender" value="N">Rather not to say</label>
+                <h3 class="warning" id="gender-warning">Please select an option</h3>
             </div>
             <div class="question">
-                <h3 style="margin-bottom:10px">What is your age?</h3>
-                <div class="smallContainer">
+                <h3>Was any part of the procedure unclear? Did you have any problems completing any of the tasks?</h3>
+                <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
+                <textarea id="problems"></textarea>
+                <h3 class="warning" id="problems-warning">Please answer this question.</h3>
+            </div>
+            <div class="question">
+                <h3>What is your age?</h3>
+                <div class="small-container">
                     <label for="age">Please enter your age: </label>
                     <input type="number" name="age" min="18" max="120">
                 </div>
                 <h3 class="warning" id="age-warning">Please enter a valid age</h3>
-            </div>
-            <div class="question">
-                <h3 style="margin-bottom:10px">What is your gender?</h3>
-                <label><input type="radio" name="gender" value="F">Female</label>
-                <label><input type="radio" name="gender" value="M">Male</label>
-                <label><input type="radio" name="gender" value="O">Others</label>
-                <label><input type="radio" name="gender" value="N">Rather not to say</label>
-                <h3 class="warning" id="gender-warning">Please select an option</h3>
             </div>
             <button class="my-buttons" id="quiz-submit-button" onclick="submit_question()">Submit</button>
         </div>
@@ -113,7 +114,7 @@
             Interested in what we are testing? See below for more information.</h2>
             <button class='my-buttons' onclick='go_to_completion_page()'>END</button>
             <br></br><div class="divider"></div>
-            <div class="bigBox" id="exp-box">
+            <div class="big-box" id="exp-box">
                 <h1>What “looks bad”? </h1>
                 <p>We are interested in finding out what “looks bad” for people. An obvious answer would be just whatever that doesn't look aesthetically pleasing. However, is it possible that “ugliness” serves special function that it has more depth and dimension?</p>
                 <br></br>
@@ -124,7 +125,6 @@
             <button class="my-buttons" onclick = 'go_to_top()'>Back to Top</button>
         </div>
 
-        <!--<button class = "myButtons" id="ending-shortcut" onclick="go_to_ending()">To Last Page</button> -XXX TODO-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="js/stimList.js"></script>
         <script src='js/func.js'></script>
