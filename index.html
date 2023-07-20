@@ -1,32 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
     <head>
-        <meta charset='UTF-8'>
-        <meta name="author" content="Oscar Su">
+        <meta charset="UTF-8" />
+        <meta name="author" content="Oscar Su" />
         <title>UCLA Experiment</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
-        <link rel="stylesheet" href="styling.css">
-
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+        />
+        <link rel="stylesheet" href="styling.css" />
     </head>
     <body>
-        <noscript>It seems that JavaScript is disabled in your browser. Please go to settings and enable JavaScript for this experiment.</noscript>
+        <noscript
+            >It seems that JavaScript is disabled in your browser. Please go to
+            settings and enable JavaScript for this experiment.</noscript
+        >
         <!--instructions page-->
         <div class="big-box fixed-box" id="instr-box">
-            <img id = "full-screen-img" src = "images/Utility/maximize_window.png" alt='Image error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-fullscreen" to receive credit.'>
-            <h2 id="instr-text">JS Error: Please email oscar517730@g.ucla.edu with the message "JS-ERROR" to receive credit.</h2>
-            <img id="display-img" src="images/Utility/Bubble 2.jpg" alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-instr" to receive credit.'>
+            <h2 id="instr-text">
+                JS Error: Please email oscar517730@g.ucla.edu with the message
+                "JS-ERROR" to receive credit.
+            </h2>
+            <img
+                id="display-img"
+                src="images/Utility/maximize_window.png"
+                alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-instr" to receive credit.'
+            />
             <div id="mock-rating">
                 <span>Not at all</span>
-                <button class="rating-button" id="task-button" value="1">1</button>
-                <button class="rating-button" id="task-button" value="2">2</button>
-                <button class="rating-button" id="task-button" value="3">3</button>
-                <button class="rating-button" id="task-button" value="4">4</button>
-                <button class="rating-button" id="task-button" value="5">5</button>
-                <button class="rating-button" id="task-button" value="6">6</button>
-                <button class="rating-button" id="task-button" value="7">7</button>
+                <button class="rating-button" id="task-button" value="1">
+                    1
+                </button>
+                <button class="rating-button" id="task-button" value="2">
+                    2
+                </button>
+                <button class="rating-button" id="task-button" value="3">
+                    3
+                </button>
+                <button class="rating-button" id="task-button" value="4">
+                    4
+                </button>
+                <button class="rating-button" id="task-button" value="5">
+                    5
+                </button>
+                <button class="rating-button" id="task-button" value="6">
+                    6
+                </button>
+                <button class="rating-button" id="task-button" value="7">
+                    7
+                </button>
                 <span>Extremely</span>
             </div>
-            <button class="my-buttons" id="next-button" onclick='instr.next()'>Next</button>
+            <button class="my-buttons" id="next-button" onclick="instr.next()">
+                Next
+            </button>
             <!--Consent Box-->
             <div id="consent-box">
                 <p>informed consent content goes here...</p>
@@ -45,11 +72,20 @@
         <!--Task Box-->
         <div class="big-box fixed-box" id="task-box">
             <div id="progress">
-                <p id='progress-text'>Part <span id="part-num">0</span>: <span id="progressBar">0</span>% done</p>
+                <p id="progress-text">
+                    Part <span id="part-num">0</span>:
+                    <span id="progress-bar">0</span>% done
+                </p>
             </div>
-            <h1 id="trial-prompt">How  <span id="prompt-adj"></span>  do you find this image is?</h1>
+            <h1 id="trial-prompt">
+                How <span id="prompt-adj"></span> do you find this image to be?
+            </h1>
             <div id="testing-area">
-                <img id="task-img" src="cropped_images/Utility/Bubble 2.jpg" alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-test" to receive credit.' />
+                <img
+                    id="task-img"
+                    src="cropped_images/Utility/Bubble 2.jpg"
+                    alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-test" to receive credit.'
+                />
                 <img id="buffer-img" />
             </div>
             <div id="rating-area">
@@ -68,69 +104,148 @@
         <!--Disclosure Questions-->
         <div class="big-box" id="question-box">
             <h2>You are almost done! Please answer these last questions:</h2>
-            <br/>
+            <br />
             <div class="question">
-                <h3>Did you complete this experiment seriously throughout (without responding randomly)?</h3>
-                <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
-                <label class="option"><input type="radio" name="serious" value="no">No, I didn't.</label>
-                <label class="option"><input type="radio" name="serious" value="yes">Yes, I did.</label>
-                <h3 class="warning" id="serious-warning">Please select an option.</h3>
+                <h3>
+                    Did you complete this experiment seriously throughout
+                    (without responding randomly)?
+                </h3>
+                <p class="small-dim">
+                    You will receive credit regardless of what your answer is
+                    here. Please be honest for science! Thanks!
+                </p>
+                <label class="option">
+                    <input type="radio" name="serious" value="no" />No, I
+                    didn't.
+                </label>
+                <label class="option">
+                    <input type="radio" name="serious" value="yes" />Yes, I did.
+                </label>
+                <h3 class="warning" id="serious-warning">
+                    Please select an option.
+                </h3>
             </div>
             <div class="question">
-                <h3>Was the browser in the full-screen mode throughout the experiment?</h3>
-                <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
-                <label class="option"><input type="radio" name="maximized" value="no">No, it wasn't.</label>
-                <label class="option"><input type="radio" name="maximized" value="yes">Yes, it was.</label>
-                <h3 class="warning" id="maximized-warning">Please select an option.</h3>
+                <h3>
+                    Was the browser in the full-screen mode throughout the
+                    experiment?
+                </h3>
+                <p class="small-dim">
+                    You will receive credit regardless of what your answer is
+                    here. Please be honest for science! Thanks!
+                </p>
+                <label class="option">
+                    <input type="radio" name="maximized" value="no" />No, it
+                    wasn't.
+                </label>
+                <label class="option">
+                    <input type="radio" name="maximized" value="yes" />Yes, it
+                    was.
+                </label>
+                <h3 class="warning" id="maximized-warning">
+                    Please select an option.
+                </h3>
             </div>
             <div class="question">
                 <h3>What is your gender?</h3>
-                <label class="option"><input type="radio" name="gender" value="F">Female</label>
-                <label class="option"><input type="radio" name="gender" value="M">Male</label>
-                <label class="option"><input type="radio" name="gender" value="O">Others</label>
-                <label class="option"><input type="radio" name="gender" value="N">Rather not to say</label>
-                <h3 class="warning" id="gender-warning">Please select an option</h3>
+                <label class="option">
+                    <input type="radio" name="gender" value="F" />Female
+                </label>
+                <label class="option">
+                    <input type="radio" name="gender" value="M" />Male
+                </label>
+                <label class="option">
+                    <input type="radio" name="gender" value="O" />Others
+                </label>
+                <label class="option">
+                    <input type="radio" name="gender" value="N" />Rather not to
+                    say
+                </label>
+                <h3 class="warning" id="gender-warning">
+                    Please select an option
+                </h3>
             </div>
             <div class="question">
-                <h3>Was any part of the procedure unclear? Did you have any problems completing any of the tasks?</h3>
-                <p class='small-dim'>You will receive credit regardless of what your answer is here. Please be honest for science! Thanks!</p>
+                <h3>
+                    Was any part of the procedure unclear? Did you have any
+                    problems completing any of the tasks?
+                </h3>
+                <p class="small-dim">
+                    You will receive credit regardless of what your answer is
+                    here. Please be honest for science! Thanks!
+                </p>
                 <textarea id="problems"></textarea>
-                <h3 class="warning" id="problems-warning">Please answer this question.</h3>
+                <h3 class="warning" id="problems-warning">
+                    Please answer this question.
+                </h3>
             </div>
             <div class="question">
                 <h3>What is your age?</h3>
                 <div class="small-container">
-                    <label for="age">Please enter your age: </label>
-                    <input type="number" name="age" min="18" max="120">
+                    Please enter your age:
+                    <input type="number" name="age" min="18" max="120" />
                 </div>
-                <h3 class="warning" id="age-warning">Please enter a valid age</h3>
+                <h3 class="warning" id="age-warning">
+                    Please enter a valid age.
+                </h3>
             </div>
-            <button class="my-buttons" id="quiz-submit-button" onclick="submit_question()">Submit</button>
+            <button
+                class="my-buttons"
+                id="quiz-submit-button"
+                onclick="submit_question()"
+            >
+                Submit
+            </button>
         </div>
 
         <!--debriefing-->
         <div class="big-box" id="debrief-box">
-            <h2 id="congrats-mess">Now there's one step left: Click END to get your credit! Thank you very much!<br /><br />
-            Interested in what we are testing? See below for more information.</h2>
-            <button class='my-buttons' onclick='go_to_completion_page()'>END</button>
-            <br></br><div class="divider"></div>
+            <h2 id="congrats-mess">
+                Now there's one step left: Click END to get your credit! Thank
+                you very much!<br /><br />
+                Interested in what we are testing? See below for more
+                information.
+            </h2>
+            <button class="my-buttons" onclick="go_to_completion_page()">
+                END
+            </button>
+            <br /><br />
+            <div class="divider"></div>
             <div class="big-box" id="exp-box">
-                <h1>What “looks bad”? </h1>
-                <p>We are interested in finding out what “looks bad” for people. An obvious answer would be just whatever that doesn't look aesthetically pleasing. However, is it possible that “ugliness” serves special function that it has more depth and dimension?</p>
-                <br></br>
-                <p>Earlier, you shared your impressions of images regarding various dimensions. With these data, we can look for relationships between ugliness and various aspect of your impressions. For example, if the “gross” impression is highly correlated with ugliness, it may suggest that seeing ugliness may be related to detecting "gross" things.</p>
-                <br></br>
-                <p>Thank you again for your work! Please press the button below to go back to the top of the page.</p>
+                <h1>What “looks bad”?</h1>
+                <p>
+                    We are interested in finding out what “looks bad” for
+                    people. An obvious answer would be just whatever that
+                    doesn't look aesthetically pleasing. However, is it possible
+                    that “ugliness” serves special function that it has more
+                    depth and dimension?
+                </p>
+                <br /><br />
+                <p>
+                    Earlier, you shared your impressions of images regarding
+                    various dimensions. With these data, we can look for
+                    relationships between ugliness and various aspect of your
+                    impressions. For example, if the “gross” impression is
+                    highly correlated with ugliness, it may suggest that seeing
+                    ugliness may be related to detecting "gross" things.
+                </p>
+                <br /><br />
+                <p>
+                    Thank you again for your work! Please press the button below
+                    to go back to the top of the page.
+                </p>
             </div>
-            <button class="my-buttons" onclick = 'go_to_top()'>Back to Top</button>
+            <button class="my-buttons" onclick="go_to_top()">
+                Back to Top
+            </button>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="js/stimList.js"></script>
-        <script src='js/func.js'></script>
-        <script src='js/subj.js'></script>
-        <script src='js/task.js'></script>
-        <script src='js/instr.js'></script>
-        <script src='js/main.js'></script>
+        <script src="js/func.js"></script>
+        <script src="js/subj.js"></script>
+        <script src="js/task.js"></script>
+        <script src="js/instr.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>

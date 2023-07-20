@@ -1,18 +1,34 @@
-//img paths
-const BLOCK_N = 1;
-const IMG_FOLDER = "cropped_images/";
+// ######## ##     ## ########  ########
+// ##        ##   ##  ##     ##    ##
+// ##         ## ##   ##     ##    ##
+// ######      ###    ########     ##
+// ##         ## ##   ##           ##
+// ##        ##   ##  ##           ##
+// ######## ##     ## ##           ##
 
-const PRAC_IMG = [
-    "Utility/Bottle 1.jpg",
-    "Utility/Bricks 1.jpg",
-    "Utility/Bubble 2.jpg",
-    "Utility/Building 2.jpg",
-    "Utility/Candle 1.jpg"
-];
+// data saving
+const FORMAL = false; // XXX
 
-const TRIAL_NUM = IMG_FILES.length;
-const RATING_PRACTICE_TRIAL_N = 5;
-const RATING_PRACTICE_LIST = shuffle_array(PRAC_IMG);
+const EXPERIMENT_NAME = "rating";
+const SUBJ_NUM_SCRIPT = "php/subjNum.php";
+const SAVING_SCRIPT = "php/save.php";
+const VISIT_FILE = "visit_" + EXPERIMENT_NAME + ".txt";
+const SUBJ_NUM_FILE = "subjNum_" + EXPERIMENT_NAME + ".txt";
+const ATTRITION_FILE = "attrition_" + EXPERIMENT_NAME + ".txt";
+const RATING_FILE = "rating_" + EXPERIMENT_NAME + ".txt";
+const SUBJ_FILE = "subj_" + EXPERIMENT_NAME + ".txt";
+const SAVING_DIR = FORMAL
+    ? "/var/www-data-experiments/cvlstudy_data/OS/" +
+      EXPERIMENT_NAME +
+      "/formal"
+    : "/var/www-data-experiments/cvlstudy_data/OS/" +
+      EXPERIMENT_NAME +
+      "/testing";
+const ID_VARIABLE_NAME = "id";
+const COMPLETION_URL = "XXX"; //XXX to be changed
+
+// parameters
+const BLOCK_N = 2; // XXX 8
 const NEG_ADJECTIVES = [
     "gross",
     "ugly",
@@ -22,11 +38,29 @@ const NEG_ADJECTIVES = [
     "scary",
     "bad"
 ];
-let random_adj = shuffle_array(NEG_ADJECTIVES);
-random_adj[random_adj.length] = "aesthetically pleasing";
-const RANDOM_ADJ = random_adj;
-const INSTR_READING_TIME_MIN = 0.5;
+const RANDOM_ADJ = shuffle_array(NEG_ADJECTIVES);
+RANDOM_ADJ.push("aesthetically pleasing");
 
+// stimuli
+const IMG_FOLDER = "cropped_images/";
+const PRAC_IMG = [
+    "Utility/Bottle 1.jpg",
+    "Utility/Bricks 1.jpg",
+    "Utility/Bubble 2.jpg",
+    "Utility/Building 2.jpg",
+    "Utility/Candle 1.jpg"
+];
+const RATING_PRACTICE_LIST = shuffle_array(PRAC_IMG);
+const RATING_PRACTICE_TRIAL_N = RATING_PRACTICE_LIST.length;
+const TRIAL_NUM = IMG_FILES.length;
+const ALL_IMG_LIST = PRAC_IMG.concat(IMG_FILES);
+const INTERTRIAL_INTERVAL = 0.5;
+
+// criteria
+const VIEWPORT_MIN_W = 800; // XXX
+const VIEWPORT_MIN_H = 600; // XXX
+const INSTR_READING_TIME_MIN = 0.3;
+// object variables
 let subj, instr, practice_task, task;
 
 // #### ##    ##  ######  ######## ########
@@ -50,12 +84,12 @@ const INSTRUCTIONS = [
         "For this study to work, the webpage will automatically switch to the full-screen view on the next page. Please stay in the full screen mode until the study automatically switches out from it."
     ],
     [
-        hide_maximize_window,
+        hide_instr_img,
         enter_fullscreen,
         "This study has 8 short parts. I will walk you through the first part now and explain the rest later."
     ],
     [
-        show_instr_img,
+        show_example_img,
         false,
         "You will view " +
             TRIAL_NUM +
@@ -66,12 +100,12 @@ const INSTRUCTIONS = [
         show_mock_scale,
         "For the first part, I am interested in how <strong>" +
             RANDOM_ADJ[0] +
-            "</strong> you find each image is. You will rate the image using a seven-point scale, as in the example below."
+            "</strong> you find each image to be. You will rate the image using a scale, as in the example below."
     ],
     [
         hide_mock_scale,
         false,
-        "In the later part, you will rate the images based on different aspects of your impression. But let's worry about it when it happens."
+        "In the later part, you will rate images based on different aspects of your impressions. But let's worry about it when it happens."
     ],
     [
         show_consent,
@@ -81,22 +115,19 @@ const INSTRUCTIONS = [
     [
         false,
         false,
-        "Great! You have completed the practice trials.<br/> Press ENTER to start for real!"
+        "Great! You have completed the practice.<br/> Press ENTER to start for real!"
     ]
 ]; //the attributes are: pre_function, post_function, display text
 
 function show_maximize_window() {
-    $("#full-screen-img").css("display", "block");
+    $("#display-img").css("display", "block");
 }
 
-function hide_maximize_window() {
-    $("#full-screen-img").hide();
-}
 function hide_instr_img() {
     $("#display-img").hide();
 }
 
-function show_instr_img() {
+function show_example_img() {
     $("#display-img").attr("src", IMG_FOLDER + "/Utility/Bubble 2.jpg");
     $("#display-img").css("display", "block");
 }
@@ -108,15 +139,23 @@ function show_mock_scale() {
 function hide_mock_scale() {
     $("#mock-rating").hide();
 }
+
 function show_consent() {
     $("#next-button").hide();
     $("#consent-box").show();
+    listen_to_start_task();
+}
+
+function listen_to_start_task() {
     $(document).keyup(function (e) {
         if (e.key == "Enter") {
             $(document).off("keyup");
             instr.next();
             $("#instr-box").hide();
             $("#consent-box").hide();
+            subj.saveAttrition();
+            subj.detectVisibilityStart();
+            task_options["subj"] = subj;
             start_task();
         }
     });
@@ -149,11 +188,10 @@ const TASK_TITLES = [
 ];
 
 function start_task() {
-    $("#prompt-adj").text(RANDOM_ADJ[subj.partNum - 1]);
-    task_options["subj"] = subj;
     task = new Task(task_options);
+    $("#prompt-adj").text(RANDOM_ADJ[subj.partNum - 1]);
+    $("#part-num").text(subj.partNum);
     $("#task-box").show();
-    subj.detectVisibilityStart();
     task.trialList = shuffle_array(task.trialList);
     task.run(); //central function call for task to run
 }
@@ -162,8 +200,7 @@ function start_task() {
 function task_update(formal_trial, last, this_trial, next_trial, path) {
     //use formal_trial parameter to determine whether the trial is practice or formal
     task.stimName = this_trial;
-    $("#part-num").text(subj.partNum);
-    $("#progressBar").text(task.progress);
+    $("#progress-bar").text(task.progress);
     $("#task-img").attr("src", path + this_trial);
     if (formal_trial) {
         //the first time switched to formal, remind the participants that we are now switching
@@ -178,9 +215,9 @@ function task_update(formal_trial, last, this_trial, next_trial, path) {
 
 function formal_trial_notice() {
     instr.startTimer();
-    listen_to_start_formal();
     $("#task-box").hide();
     $("#instr-box").show();
+    listen_to_start_formal();
 }
 
 function listen_to_start_formal() {
@@ -205,10 +242,10 @@ function rating() {
     });
 }
 
-function end_task() {
+function end_part() {
     task.save();
     if (subj.partNum < BLOCK_N) inter_block_rest();
-    else end_of_task();
+    else end_task();
 }
 
 function inter_block_rest() {
@@ -220,7 +257,7 @@ function inter_block_rest() {
             BLOCK_N +
             " parts. Take a brief break if you wish.<br/><br/> Next, I am interested in how <em>" +
             RANDOM_ADJ[subj.partNum] +
-            "</em> you find each image is.<br/><br/> When you are ready, press ENTER to continue."
+            "</em> you find each image to be.<br/><br/> When you are ready, press ENTER to continue."
     );
     $("#instr-box").show();
     $(document).keyup(function (e) {
@@ -240,7 +277,7 @@ function start_next_part() {
     start_task();
 }
 
-function end_of_task() {
+function end_task() {
     //pull up question box
     subj.detectVisibilityEnd();
     $("#task-box").hide();
@@ -251,16 +288,16 @@ let task_options = {
     titles: TASK_TITLES,
     pracTrialN: RATING_PRACTICE_TRIAL_N,
     trialN: TRIAL_NUM,
-    // savingScript: SAVING_SCRIPT,
-    // dataFile: RATING_FILE,
+    savingScript: SAVING_SCRIPT,
+    dataFile: RATING_FILE,
     stimPath: IMG_FOLDER,
-    // savingDir: SAVING_DIR,
+    savingDir: SAVING_DIR,
     trialList: IMG_FILES,
     pracList: RATING_PRACTICE_LIST,
-    //intertrialInterval: INTERTRIAL_INTERVAL,
+    intertrialInterval: INTERTRIAL_INTERVAL,
     updateFunc: task_update,
     trialFunc: rating,
-    endExptFunc: end_task,
+    endExptFunc: end_part,
     progressInfo: true
 };
 
@@ -293,19 +330,30 @@ const SUBJ_TITLES = [
     "gender"
 ];
 
+function update_task_object_subj_num() {
+    if (typeof task !== "undefined") {
+        task.num = subj.num;
+    }
+}
+
 function submit_question() {
     let open_que_names = ["age"];
     let choice_names = ["serious", "gender", "maximized"];
     let non_input_names = ["problems"];
     if (check_answered(open_que_names, choice_names, non_input_names)) {
         $("#question-box").hide();
+        exit_fullscreen();
+        allow_selection();
+        $("#debrief-box").css("display", "flex");
+        go_to_top();
+
         for (let q of open_que_names) {
             subj[q] = $("input[name=" + q + "]")
                 .val()
                 .replace(/(?:\r\n|\r|\n)/g, "<br />");
         }
-        for (let q of non_input_names){
-            subj[q] = $("#"+q)
+        for (let q of non_input_names) {
+            subj[q] = $("#" + q)
                 .val()
                 .replace(/(?:\r\n|\r|\n)/g, "<br />");
         }
@@ -314,9 +362,6 @@ function submit_question() {
             (d) => d < INSTR_READING_TIME_MIN
         ).length;
         subj.submitAnswers();
-        go_to_top();
-        $("#debrief-box").css("display", "flex");
-        $("#ending-shortcut").hide();
     }
 }
 
@@ -327,7 +372,7 @@ function check_answered(open_ended_que, choice_que, non_input_que) {
         if (value == "") {
             $("#" + q + "-warning").css("display", "block");
             all_responded = false;
-        } else{
+        } else {
             $("#" + q + "-warning").hide();
         }
     }
@@ -338,15 +383,24 @@ function check_answered(open_ended_que, choice_que, non_input_que) {
             all_responded = false;
         } else $("#" + q + "-warning").hide();
     }
-    for (let q of non_input_que){
-        let val = $("#"+q).val();
+    for (let q of non_input_que) {
+        let val = $("#" + q).val();
         if (val == "") {
             $("#" + q + "-warning").css("display", "block");
             all_responded = false;
         } else $("#" + q + "-warning").hide();
     }
-    
+
     return all_responded;
+}
+
+function allow_selection() {
+    $("body").css({
+        "-webkit-user-select": "text",
+        "-moz-user-select": "text",
+        "-ms-user-select": "text",
+        "user-select": "text"
+    });
 }
 
 function go_to_top() {
@@ -354,20 +408,21 @@ function go_to_top() {
 }
 
 function go_to_completion_page() {
-    exit_fullscreen();
+    window.location.href = COMPLETION_URL + subj.id;
 }
 
 let subj_options = {
-    subjNumScript: "", // XXX
-    savingScript: "", // XXX
-    subjNumFile: "", // XXX
-    visitFile: "visit.txt", // XXX
-    attritionFile: "attrition.txt", // XXX
-    subjFile: "subj.txt", // XXX
-    savingDir: "data/testing", // XXX
-    titles: [""],
-    viewportMinW: 0,
-    viewportMinH: 0
+    titles: SUBJ_TITLES,
+    viewportMinW: VIEWPORT_MIN_W,
+    viewportMinH: VIEWPORT_MIN_H,
+    subjNumCallback: update_task_object_subj_num,
+    subjNumScript: SUBJ_NUM_SCRIPT,
+    savingScript: SAVING_SCRIPT,
+    subjNumFile: SUBJ_NUM_FILE,
+    visitFile: VISIT_FILE,
+    attritionFile: ATTRITION_FILE,
+    subjFile: SUBJ_FILE,
+    savingDir: SAVING_DIR
 };
 
 // ########  ########    ###    ########  ##    ##
@@ -379,9 +434,19 @@ let subj_options = {
 // ##     ## ######## ##     ## ########     ##
 
 $(document).ready(function () {
-    load_img(0, IMG_FOLDER, IMG_FILES);
+    load_img(0, IMG_FOLDER, ALL_IMG_LIST);
     subj = new Subject(subj_options);
+    subj.id = subj.getID(ID_VARIABLE_NAME);
     subj.partNum = 1;
-    instr = new Instructions(instr_options);
-    instr.start();
+    subj.saveVisit();
+    if (subj.validID) {
+        instr = new Instructions(instr_options);
+        instr.start();
+    } else {
+        allow_selection();
+        $("#instr-text").html(
+            'ID ERROR: Please visit the experiment page again from the link provided on the website you signed up for the experiment. If you believe you have received this message in error, please contact the experimenter at oscar517730@g.ucla.edu with the message "ID-ERROR" .'
+        );
+        $("#next-button").hide();
+    }
 });

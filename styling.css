@@ -1,31 +1,35 @@
-body{
+body {
     background-color: rgb(25, 23, 25);
     font-family: "Roboto", Calibri, "Trebuchet MS", sans-serif;
     font-size: 21px;
     color: rgb(249, 240, 255);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
-h3{
+h3 {
     min-width: 28px;
     font-size: 28px;
 }
-h2{
+h2 {
     min-width: 35px;
 }
-h1{
+h1 {
     min-width: 48px;
 }
-span{
+span {
     font-size: 21px;
     margin-top: 10px;
 }
-button{
+button {
     font-size: 21px;
 }
-.big-box{
+.big-box {
     width: 60%;
     margin: 0px auto;
 }
-.fixed-box{
+.fixed-box {
     margin: 0;
     position: absolute; /* Position the container element absolutely */
     top: 50%; /* Move the container element down by 50% of its height */
@@ -35,26 +39,26 @@ button{
         -50%
     ); /* Translate the container element up by 50% of its height and left by 50% of its width */
 }
-#full-screen-img{
+#full-screen-img {
     display: none;
     position: relative;
     margin: 0 auto;
     width: 30%;
 }
-#display-img{
+#display-img {
     display: none;
     position: relative;
     margin: 0 auto;
 }
 
-#instr-text{
+#instr-text {
     position: relative;
     width: 100%;
     margin: 25px auto;
     text-align: center;
 }
 
-#mock-rating{
+#mock-rating {
     position: relative;
     display: none;
     justify-content: center;
@@ -64,10 +68,10 @@ button{
     margin: 60px auto;
 }
 
-#mock-rating .rating-button{
-    cursor:default;
+#mock-rating .rating-button {
+    cursor: default;
 }
-.my-buttons{
+.my-buttons {
     display: block;
     position: relative;
     margin: 25px auto;
@@ -82,11 +86,11 @@ button{
     border-width: 0;
 }
 
-.my-buttons:hover{
+.my-buttons:hover {
     background-color: #988f9c;
 }
 
-.choices{
+.choices {
     display: block;
     position: relative;
     margin: 10px auto;
@@ -97,17 +101,17 @@ button{
     cursor: pointer;
 }
 
-#consent-box{
+#consent-box {
     display: none;
     background-color: rgba(143, 134, 160, 0.618);
     width: 100%;
     height: 300px;
     overflow: auto;
     border: 2px dashed black;
-    margin:25px auto;
+    margin: 25px auto;
 }
 
-#testing-area{
+#testing-area {
     /*thanks ChatGPT*/
     display: flex;
     justify-content: center;
@@ -118,16 +122,16 @@ button{
     margin-bottom: 30px;
 }
 
-#trial-prompt{
+#trial-prompt {
     color: rgb(183, 183, 183);
     margin-top: 10px;
 }
 
-#prompt-adj{
+#prompt-adj {
     color: white;
     font-size: larger;
 }
-.rating-button{
+.rating-button {
     display: inline-block;
     position: relative;
     margin: 10px 5px auto;
@@ -142,53 +146,53 @@ button{
     border-width: 0;
 }
 
-.rating-button[value="1"]{
+.rating-button[value="1"] {
     background: #7c7b7c;
     margin-left: 30px;
 }
-.rating-button[value="2"]{
+.rating-button[value="2"] {
     background: #727173;
 }
-.rating-button[value="3"]{
+.rating-button[value="3"] {
     background: #6b6a6b;
 }
-.rating-button[value="4"]{
+.rating-button[value="4"] {
     background: #5f5e5f;
 }
-.rating-button[value="5"]{
+.rating-button[value="5"] {
     background: #494848;
 }
-.rating-button[value="6"]{
+.rating-button[value="6"] {
     background: #424141;
 }
-.rating-button[value="7"]{
+.rating-button[value="7"] {
     background: #343333;
     margin-right: 30px;
 }
 
-#rating-area .rating-button:hover{
+#rating-area .rating-button:hover {
     border-color: white;
     border-width: 3px;
     border-style: solid;
 }
 
-#task-img{
+#task-img {
     /* how to make all images the same dimension?*/
     display: inline-block;
     max-width: 100%;
     max-height: 300px;
 }
-#buffer-img{
+#buffer-img {
     display: none;
 }
 
-#task-box{
+#task-box {
     display: none;
     text-align: center;
     height: 70%;
 }
 
-#rating-area{
+#rating-area {
     position: relative;
     display: flex;
     justify-content: center;
@@ -197,21 +201,21 @@ button{
     margin: 20px auto;
 }
 
-#progress{
+#progress {
     text-align: center;
     font-size: 25px;
     color: rgb(183, 183, 183);
 }
 
-#progress span{
+#progress span {
     font-size: 25px;
 }
 
-#progress-text{
+#progress-text {
     margin-bottom: 10px;
 }
 
-#question-box{
+#question-box {
     position: relative;
     text-align: left;
     display: none;
@@ -219,69 +223,69 @@ button{
     margin-top: 75px;
 }
 
-#question-box label{
+#question-box label {
     font-size: 24px;
 }
-.option{
-    display:block;
+.option {
+    display: block;
     background-color: #343236;
-    padding:8px;
-    border-radius:5px;
-    margin:10px 0px;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 10px 0px;
 }
 
-.option:hover{
-    background-color:rgb(98, 92, 104);
-    cursor:pointer;
+.option:hover {
+    background-color: rgb(98, 92, 104);
+    cursor: pointer;
 }
 
-#question-box input[name="age"]{
+#question-box input[name="age"] {
     margin: 0px 0px 0px 5px;
 }
 
-.question h3{
-    margin-bottom:10px;
+.question h3 {
+    margin-bottom: 10px;
 }
-#problems{
+#problems {
     width: 100%;
     height: 100px;
-    font-size:21px;
+    font-size: 21px;
 }
-.small-dim{
+.small-dim {
     font-size: 21px;
     color: rgb(158, 158, 158);
     margin-top: 0px;
     margin-bottom: 20px;
 }
 
-.small-container{
-    display:flex;
+.small-container {
+    display: flex;
     justify-content: flex-start;
     align-items: center;
-    height:100%;
+    height: 100%;
 }
-label[for="age"]{
-    position:relative;
+label[for="age"] {
+    position: relative;
     margin: auto 10px auto 0px;
 }
-input[name="age"]{
-    height:35px;
+input[name="age"] {
+    height: 35px;
     width: 10%;
-    font-size:21px;
+    font-size: 21px;
 }
-.warning{
+.warning {
     color: rgb(246, 80, 80);
     display: none;
     margin: 15px 0px 0px auto;
 }
 
-#congrats-mess{
+#congrats-mess {
     width: 1000px;
     margin: auto;
     text-align: center;
 }
 
-#debrief-box{
+#debrief-box {
     position: relative;
     display: none;
     justify-content: center;
@@ -292,19 +296,19 @@ input[name="age"]{
     margin-top: 100px;
 }
 
-.divider{
+.divider {
     height: 1px;
     margin: 0 auto;
     width: 70%;
     background-color: rgb(77, 76, 76);
 }
-#exp-box{
+#exp-box {
     width: 70%;
     margin: 0 auto;
     text-align: left;
 }
 
-#exp-box p{
+#exp-box p {
     margin: 5px auto;
     font-size: 28px;
 }
