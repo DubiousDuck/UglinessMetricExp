@@ -7,7 +7,7 @@
 // ######## ##     ## ##           ##
 
 // data saving
-const FORMAL = false; // XXX
+const FORMAL = true;
 
 const EXPERIMENT_NAME = "rating";
 const SUBJ_NUM_SCRIPT = "php/subjNum.php";
@@ -18,17 +18,18 @@ const ATTRITION_FILE = "attrition_" + EXPERIMENT_NAME + ".txt";
 const RATING_FILE = "rating_" + EXPERIMENT_NAME + ".txt";
 const SUBJ_FILE = "subj_" + EXPERIMENT_NAME + ".txt";
 const SAVING_DIR = FORMAL
-    ? "/var/www-data-experiments/cvlstudy_data/OS/" +
+    ? "/var/www-data-experiments/cvlstudy_data/YCC/" +
       EXPERIMENT_NAME +
       "/formal"
-    : "/var/www-data-experiments/cvlstudy_data/OS/" +
+    : "/var/www-data-experiments/cvlstudy_data/YCC/" +
       EXPERIMENT_NAME +
       "/testing";
 const ID_VARIABLE_NAME = "id";
-const COMPLETION_URL = "XXX"; //XXX to be changed
+const COMPLETION_URL =
+    "https://ucla.sona-systems.com/webstudy_credit.aspx?experiment_id=2232&credit_token=35edeeadae284c40bb551227abc41689&survey_code=";
 
 // parameters
-const BLOCK_N = 2; // XXX 8
+const BLOCK_N = 8;
 const NEG_ADJECTIVES = [
     "gross",
     "ugly",
@@ -57,8 +58,8 @@ const ALL_IMG_LIST = PRAC_IMG.concat(IMG_FILES);
 const INTERTRIAL_INTERVAL = 0.5;
 
 // criteria
-const VIEWPORT_MIN_W = 800; // XXX
-const VIEWPORT_MIN_H = 600; // XXX
+const VIEWPORT_MIN_W = 800;
+const VIEWPORT_MIN_H = 600;
 const INSTR_READING_TIME_MIN = 0.3;
 // object variables
 let subj, instr, practice_task, task;
@@ -180,7 +181,9 @@ const TASK_TITLES = [
     "num",
     "date",
     "subjStartTime",
+    "partNum",
     "trialNum",
+    "adj",
     "stimName",
     "inView",
     "response",
@@ -189,7 +192,9 @@ const TASK_TITLES = [
 
 function start_task() {
     task = new Task(task_options);
-    $("#prompt-adj").text(RANDOM_ADJ[subj.partNum - 1]);
+    task.partNum = subj.partNum;
+    task.adj = RANDOM_ADJ[subj.partNum - 1];
+    $("#prompt-adj").text(task.adj);
     $("#part-num").text(subj.partNum);
     $("#task-box").show();
     task.trialList = shuffle_array(task.trialList);
@@ -310,8 +315,8 @@ let task_options = {
 //  ######   #######  ########   ######  ########  ######     ##
 
 const SUBJ_TITLES = [
-    "subjNum",
-    "startDate",
+    "num",
+    "date",
     "startTime",
     "id",
     "endTime",
@@ -351,6 +356,9 @@ function submit_question() {
             subj[q] = $("input[name=" + q + "]")
                 .val()
                 .replace(/(?:\r\n|\r|\n)/g, "<br />");
+        }
+        for (let q of choice_names) {
+            subj[q] = $("input[name=" + q + "]:checked").val();
         }
         for (let q of non_input_names) {
             subj[q] = $("#" + q)
