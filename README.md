@@ -1,7 +1,22 @@
-# MockExpWebsite
-This is my first attempt to make a mock experiment website.
+# Ugliness Rating Experiment
+This is a website designed to hold an online experiment on ugliness and adjectives.
 
-It's based on the structure of Post-Doc Yi-Chia Chen's example website.
-I am using her supplementary functions as well as some main functions for my JavaScript.
+This is a shorter version of the experiment, with the focus on getting the overall structure done.
 
-There's a lot of design aspects that can be fixed, which I will work on in the future.
+Features that yet to be added:
+
+Structure:
+Instructions (no instruction quiz) v
+Practice trials v
+Eight blocks of trials
+    Each block has 90 images
+    Ideas of implementing the eight blocks
+        All eight blocks become one giant list
+            block info and control will be handled in main
+        Single trial list repeated eight times
+            Implemented by redefining the task object
+        
+Self-disclosure questionnaire
+Debriefing
+
+Implement real images (fix asynch issues)

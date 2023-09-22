@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="author" content="Oscar Su" />
+        <title>UCLA Experiment</title>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+        />
+        <link rel="stylesheet" href="styling.css" />
+    </head>
+    <body>
+        <noscript
+            >It seems that JavaScript is disabled in your browser. Please go to
+            settings and enable JavaScript for this experiment.</noscript
+        >
+        <!--instructions page-->
+        <div class="big-box fixed-box" id="instr-box">
+            <h2 id="instr-text">
+                JS Error: Please email oscar517730@g.ucla.edu with the message
+                "JS-ERROR" to receive credit.
+            </h2>
+            <img
+                id="display-img"
+                src="cropped_images/Utility/maximize_window.png"
+                alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-instr" to receive credit.'
+            />
+            <div id="mock-rating">
+                <span>Not at all</span>
+                <button class="rating-button" id="task-button" value="1">
+                    1
+                </button>
+                <button class="rating-button" id="task-button" value="2">
+                    2
+                </button>
+                <button class="rating-button" id="task-button" value="3">
+                    3
+                </button>
+                <button class="rating-button" id="task-button" value="4">
+                    4
+                </button>
+                <button class="rating-button" id="task-button" value="5">
+                    5
+                </button>
+                <button class="rating-button" id="task-button" value="6">
+                    6
+                </button>
+                <button class="rating-button" id="task-button" value="7">
+                    7
+                </button>
+                <span>Extremely</span>
+            </div>
+            <button class="my-buttons" id="next-button" onclick="instr.next()">
+                Next
+            </button>
+            <!--Consent Box-->
+            <div id="consent-box">
+                <p>
+                    <strong>INFORMATION SHEET for online participants</strong>
+                </p>
+                <p>
+                    You are invited to participate in a research study on human
+                    cognition, conducted by Hongjing Lu, PhD, of the Dept. of
+                    Psychology at UCLA. You were selected as a possible
+                    participant in this study because you have normal or
+                    corrected vision, and are 18 years of age or older. For
+                    scientific reasons, this consent form does not include
+                    complete information about the study hypotheses and the
+                    research questions being tested. You will be fully debriefed
+                    following your participation in the research.
+                </p>
+                <p><strong>Purpose of Study</strong></p>
+                <p>
+                    The purpose of the study is to understand human perception
+                    and cognition.
+                </p>
+                <p><strong>Procedures Involved in Study</strong></p>
+                <p>
+                    If you agree to participate, you may be presented with
+                    images, videos, or sounds on a computer screen, and answer
+                    simple questions and/or perform simple tasks by interacting
+                    with a website via a keyboard or a computer mouse. You may
+                    also be asked to fill out some questionnaires about your
+                    personality or experience, which will take at max 15
+                    minutes. Your responses will be recorded by the computer and
+                    will not be identified with you in any way. You may receive
+                    a demographic questionnaire to collect information of your
+                    age, gender, ethnicity, and language. The session will take
+                    at most 60 minutes.
+                </p>
+                <p><strong>Potential Risks and Discomforts</strong></p>
+                <p>
+                    There is no known risk/discomfort in this study. If you
+                    experience any discomfort during the course of the
+                    experiment, you can stop at any time and notify the
+                    experimenter.
+                </p>
+                <p><strong>Potential Benefits to Subject</strong></p>
+                <p>
+                    There are no direct benefits from participating in this
+                    study.
+                </p>
+                <p><strong>Potential Benefits to Society</strong></p>
+                <p>
+                    The findings of the study will help improve procedures for
+                    making important decisions to avoid unwanted biases. For
+                    example, individual’s cognitive tendencies may influence
+                    their decision making on finance, relationships, or diets,
+                    and their behaviors in different contexts like internet
+                    versus in-person interactions. By understanding how people
+                    differ from each other, we will be able to design better
+                    environments for people to make rational and just decisions
+                    in different domains in life.
+                </p>
+                <p><strong>Payment for Participation</strong></p>
+                <p>
+                    You would receive 0.5 hour of credit every 30 minute for
+                    your psychology class if you signed up for the study through
+                    the UCLA Psychology Department Subject Pool; otherwise, you
+                    would receive the payment in the rate of $10 per hour for
+                    your participation.
+                </p>
+                <p><strong>Confidentiality</strong></p>
+                <p>
+                    Your identity in this study will be treated as confidential.
+                    The results of the study, including laboratory or any other
+                    data, may be published for scientific purposes but will not
+                    include any identifiable references to you. The researchers
+                    will do their best to make sure that your private
+                    information is kept confidential. Information about you will
+                    be handled as confidentially as possible, but participating
+                    in research may involve a loss of privacy and the potential
+                    for a breach in confidentiality. Study data will be
+                    physically and electronically secured. As with any use of
+                    electronic means to store data, there is a risk of breach of
+                    data security. Your data, including de-identified data may
+                    be kept for use in future research.
+                </p>
+                <p>
+                    Your IP Addresses may be collected to prevent the same IP
+                    address from participating twice. Your platform ID (e.g.,
+                    Mturk worker ID, Prolific ID, or Sona ID) will not be shared
+                    with anyone outside of the research team and will not be
+                    linked to study responses. However, any work performed on
+                    MTurk can be linked to the user’s public profile page. Thus,
+                    you may wish to restrict what information you choose to
+                    share in your public profile.
+                </p>
+                <p><strong>Participation and Withdraw</strong></p>
+                <p>
+                    Your participation is VOLUNTARY. You may withdraw from the
+                    experiment at any time without suffering any negative
+                    consequences.
+                </p>
+                <p><strong>Identification of Investigators</strong></p>
+                <p>
+                    If you have any questions, feel free to contact Dr. Hongjing
+                    Lu (hongjing@ucla.edu), at the Department of Psychology,
+                    UCLA, 405 Hilgard Ave., Los Angeles, CA 90095-1563.
+                </p>
+                <p><strong>Rights of Research Subjects</strong></p>
+                <p>
+                    You may withdraw your consent at any time and discontinue
+                    participation without penalty. You are not waiving any legal
+                    claims, rights or remedies because of your participation in
+                    this research study.
+                </p>
+                <p>
+                    <strong
+                        >UCLA Office of the Human Research Protection Program
+                        (OHRPP)</strong
+                    >
+                </p>
+                <p>
+                    If you have questions about your rights as a research
+                    subject, or you have concerns or suggestions and you want to
+                    talk to someone other than the researchers, you may contact
+                    the UCLA OHRPP by phone: (310) 206-2040; by email:
+                    participants@research.ucla.edu or by mail: Box 951406, Los
+                    Angeles, CA 90095-1406.
+                </p>
+            </div>
+        </div>
+
+        <!--Task Box-->
+        <div class="big-box fixed-box" id="task-box">
+            <div id="progress">
+                <p id="progress-text">
+                    Part <span id="part-num">0</span>:
+                    <span id="progress-bar">0</span>% done
+                </p>
+            </div>
+            <h1 id="trial-prompt">
+                How <span id="prompt-adj"></span> do you find this image to be?
+            </h1>
+            <div id="testing-area">
+                <img
+                    id="task-img"
+                    src="cropped_images/Utility/Bubble 2.jpg"
+                    alt='Image Error: Please email oscar517730@g.ucla.edu with the message "IMG-ERROR-test" to receive credit.'
+                />
+                <img id="buffer-img" />
+            </div>
+            <div id="rating-area">
+                <span>Not at all</span>
+                <button class="rating-button" value="1">1</button>
+                <button class="rating-button" value="2">2</button>
+                <button class="rating-button" value="3">3</button>
+                <button class="rating-button" value="4">4</button>
+                <button class="rating-button" value="5">5</button>
+                <button class="rating-button" value="6">6</button>
+                <button class="rating-button" value="7">7</button>
+                <span>Extremely</span>
+            </div>
+        </div>
+
+        <!--Disclosure Questions-->
+        <div class="big-box" id="question-box">
+            <h2>You are almost done! Please answer these last questions:</h2>
+            <br />
+            <div class="question">
+                <h3>
+                    Did you complete this experiment seriously throughout
+                    (without responding randomly)?
+                </h3>
+                <p class="small-dim">
+                    You will receive credit regardless of what your answer is
+                    here. Please be honest for science! Thanks!
+                </p>
+                <label class="option">
+                    <input type="radio" name="serious" value="no" />No, I
+                    didn't.
+                </label>
+                <label class="option">
+                    <input type="radio" name="serious" value="yes" />Yes, I did.
+                </label>
+                <h3 class="warning" id="serious-warning">
+                    Please select an option.
+                </h3>
+            </div>
+            <div class="question">
+                <h3>
+                    Was the browser in the full-screen mode throughout the
+                    experiment?
+                </h3>
+                <p class="small-dim">
+                    You will receive credit regardless of what your answer is
+                    here. Please be honest for science! Thanks!
+                </p>
+                <label class="option">
+                    <input type="radio" name="maximized" value="no" />No, it
+                    wasn't.
+                </label>
+                <label class="option">
+                    <input type="radio" name="maximized" value="yes" />Yes, it
+                    was.
+                </label>
+                <h3 class="warning" id="maximized-warning">
+                    Please select an option.
+                </h3>
+            </div>
+            <div class="question">
+                <h3>What is your gender?</h3>
+                <label class="option">
+                    <input type="radio" name="gender" value="F" />Female
+                </label>
+                <label class="option">
+                    <input type="radio" name="gender" value="M" />Male
+                </label>
+                <label class="option">
+                    <input type="radio" name="gender" value="O" />Others
+                </label>
+                <label class="option">
+                    <input type="radio" name="gender" value="N" />Rather not to
+                    say
+                </label>
+                <h3 class="warning" id="gender-warning">
+                    Please select an option
+                </h3>
+            </div>
+            <div class="question">
+                <h3>
+                    Was any part of the procedure unclear? Did you have any
+                    problems completing any of the tasks?
+                </h3>
+                <p class="small-dim">
+                    You will receive credit regardless of what your answer is
+                    here. Please be honest for science! Thanks!
+                </p>
+                <textarea id="problems"></textarea>
+                <h3 class="warning" id="problems-warning">
+                    Please answer this question.
+                </h3>
+            </div>
+            <div class="question">
+                <h3>What is your age?</h3>
+                <div class="small-container">
+                    Please enter your age:
+                    <input type="number" name="age" min="18" max="120" />
+                </div>
+                <h3 class="warning" id="age-warning">
+                    Please enter a valid age.
+                </h3>
+            </div>
+            <button
+                class="my-buttons"
+                id="quiz-submit-button"
+                onclick="submit_question()"
+            >
+                Submit
+            </button>
+        </div>
+
+        <!--debriefing-->
+        <div class="big-box" id="debrief-box">
+            <h2 id="congrats-mess">
+                Now there's one step left: Click END to get your credit! Thank
+                you very much!<br /><br />
+                Interested in what we are testing? See below for more
+                information.
+            </h2>
+            <button class="my-buttons" onclick="go_to_completion_page()">
+                END
+            </button>
+            <br /><br />
+            <div class="divider"></div>
+            <div class="big-box" id="exp-box">
+                <h1>What “looks bad”?</h1>
+                <p>
+                    We are interested in finding out what “looks bad” for
+                    people. An obvious answer would be just whatever that
+                    doesn't look aesthetically pleasing. However, is it possible
+                    that “ugliness” serves special function that it has more
+                    depth and dimension?
+                </p>
+                <br /><br />
+                <p>
+                    Earlier, you shared your impressions of images regarding
+                    various dimensions. With these data, we can look for
+                    relationships between ugliness and various aspect of your
+                    impressions. For example, if the “gross” impression is
+                    highly correlated with ugliness, it may suggest that seeing
+                    ugliness may be related to detecting "gross" things.
+                </p>
+                <br /><br />
+                <strong
+                    >Here's some additional information about the broader
+                    project this study is associated with:</strong
+                ><br /><br />
+                <p>
+                    We are studying human cognition by looking at how people
+                    differ in terms of personality, cognitive tendencies, and
+                    skills. Here are a few example scientific questions we are
+                    looking at:
+                </p>
+                <p>Do people agree what looks pretty and what looks bad?</p>
+                <p>
+                    How is one’s personality related to their judgement of
+                    social situations?
+                </p>
+                <p>
+                    Would cultural backgrounds influence memory of different
+                    objects?
+                </p>
+                <p>
+                    If you have any questions, please feel free to contact the
+                    researcher Yi-Chia Chen at yichiachen@g.ucla.edu.
+                </p>
+                <p>
+                    Thank you again for your work! Please press the button below
+                    to go back to the top of the page.
+                </p>
+            </div>
+            <button class="my-buttons" onclick="go_to_top()">
+                Back to Top
+            </button>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="js/stimList.js"></script>
+        <script src="js/func.js"></script>
+        <script src="js/subj.js"></script>
+        <script src="js/task.js"></script>
+        <script src="js/instr.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
